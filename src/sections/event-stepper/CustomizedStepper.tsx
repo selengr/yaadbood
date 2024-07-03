@@ -31,7 +31,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormDataSchema } from './schema';
 import FormProvider from '@/components/hook-form/FormProvider';
 import { LoadingButton } from '@mui/lab';
-import OrderStepFour from './step-four/OrderStepFour';
+import OrderStepFour from './step-four/EventStepFour';
+import EventStepFive from './step-four/EventStepFour';
+import EventStepOne from './step-one/EventStepOne';
+import EventStepTwo from './step-two/EventStepTwo';
+import EventStepThree from './step-three/EventStepThree';
+import EventStepFour from './step-five/EventStepFive';
 
 
 // ----------------------------------------------------------------------
@@ -86,8 +91,8 @@ function getStepContent({step,delta}:{step:number,delta:number}) {
                return <EventStepThree delta={delta}/>;
           case 3:
                return <EventStepFour delta={delta}/>;
-          // case 4:
-          //      return <EventStepThree />;
+          case 4:
+               return <EventStepFive delta={delta}/>;
           default:
                return 'Unknown step';
      }
@@ -156,58 +161,11 @@ export default function CustomizedSteppers() {
           if (!output) return;
 
           if (activeStep === 0) {
-               let { requesterUserId, dependentId, areaId, fullAddress } = getValues();
-               let data = {
-                    requesterUserId,
-                    dependentId,
-                    areaId,
-                    fullAddress
-               };
-               if (dependentId === 0) {
-                    delete data.dependentId;
-               }
-               try {
-                    let res = await callApi().post(`/order`, data);
-                    if (window) localStorage.setItem('order-id', res.data.data.id);
-                    setPreviousStep(activeStep);
-                    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-               } catch (error) {
-                    console.error(error);
-               }
+              
           }
-          if (activeStep === 1) {
-               const { sid } = getValues();
-               if (sid === 0 || null) {
-                    toast.error('انتخاب خدمت الزامی است');
-               } else {
-                    setPreviousStep(activeStep);
-                    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-               }
-          }
-          if (activeStep === 2) {
-               setPreviousStep(activeStep);
-               setActiveStep((prevActiveStep) => prevActiveStep + 1);
-          }
-          if (activeStep === 3) {
-               let orderId = window && localStorage.getItem('order-id');
-               let orderSubService = window && localStorage.getItem('order-sub-service');
-               try {
-                    let res = await callApi().post(`/order/${orderId}/session`,orderSubService);
-                    setPreviousStep(activeStep);
-                    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-                    localStorage.removeItem('order-sub-service');
-               } catch (error) {
-                    console.error(error);
-               }
-          }
-
-          // if (activeStep < STEPS.length - 1) {
-          //      if (activeStep === STEPS.length - 2) {
-          //           await handleSubmit(onSubmit)();
-          //      }
-          //      setPreviousStep(activeStep);
-          //      setActiveStep((prevActiveStep) => prevActiveStep + 1);
-          // }
+         
+          setPreviousStep(activeStep);
+          setActiveStep((prevActiveStep) => prevActiveStep + 1);
      };
 
      const handleBack = () => {
