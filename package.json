@@ -10,7 +10,7 @@
     "npm": "please-use-npm"
   },
   "scripts": {
-    "dev": "next dev --turbo -p 4000",
+    "dev": "next dev --turbo -p 7000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
