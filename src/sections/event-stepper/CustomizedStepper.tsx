@@ -40,25 +40,25 @@ import EventStepFour from './step-five/EventStepFive';
 const STEPS = [
   {
     id: 1,
-    name: 'stepOne',
+    name: 'اطلاعات',
     fields: ['stepOne'],
   },
   {
     id: 0,
-    name: 'stepTwo',
+    name: 'رسانه',
     fields: ['stepTwo'],
   },
   {
     id: 3,
-    name: 'stepThree',
+    name: 'میزبان / مهمان',
     fields: ['stepThree'],
   },
   {
     id: 2,
-    name: 'stepFour',
+    name: 'امکانات',
     fields: ['stepFour'],
   },
-  { id: 4, name: 'stepFive' },
+  { id: 4, name: 'ثبت نهایی' },
 ];
 
 // --------------------------------------------------------
@@ -151,7 +151,15 @@ export default function CustomizedSteppers() {
   };
 
   return (
-    <Box>
+    <Box
+    sx={{
+        width : "90%",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+      }}
+    >
       {/* <Stepper
                     alternativeLabel
                     activeStep={activeStep}

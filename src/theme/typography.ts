@@ -1,5 +1,6 @@
 // import { Public_Sans, Barlow } from '@next/font/google';
 import "../../public/fonts/index.css"
+// public/fonts/index.css
 
 // ----------------------------------------------------------------------
 

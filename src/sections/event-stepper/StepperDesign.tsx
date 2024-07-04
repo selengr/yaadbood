@@ -26,7 +26,8 @@ export const QontoConnector = styled(StepConnector)(({ theme }) => ({
     },
     [`&.${stepConnectorClasses.active}`]: {
          [`& .${stepConnectorClasses.line}`]: {
-              borderColor: theme.palette.success.main
+          //     borderColor: theme.palette.success.main
+              borderColor: '#1758BA'
          }
     },
     [`&.${stepConnectorClasses.completed}`]: {

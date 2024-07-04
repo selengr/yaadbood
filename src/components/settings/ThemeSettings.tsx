@@ -1,3 +1,5 @@
+"use client"
+
 import ThemeContrast from './ThemeContrast';
 import ThemeRtlLayout from './ThemeRtlLayout';
 import ThemeColorPresets from './ThemeColorPresets';
