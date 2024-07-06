@@ -1,6 +1,7 @@
 import { RHFCheckbox } from '@/components/hook-form';
 import { Box, Divider, Stack, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const EventStepFive = ({ delta }: { delta: number }) => {
   return (
@@ -12,8 +13,72 @@ const EventStepFive = ({ delta }: { delta: number }) => {
       >
         <Box
           sx={{
+            p: 3,
+            my: 3,
+            borderRadius: 3,
+            display: 'flex',
+            justifyContent: 'start',
+            alignItems: 'start',
+            flexDirection: 'column',
+            width: '100%',
+            position: 'relative',
+            bgcolor: (theme) => theme.palette.primary.lighter,
+          }}
+        >
+          <Stack
+            direction="row"
+            sx={{
+              display: 'flex',
+              justifyContent: 'start',
+              width: '100%',
+              pb: 2,
+            }}
+          >
+            <Typography variant="body2" sx={{ color: '#000' }}>
+              عنوان یادبود:
+            </Typography>
+            <Typography variant="body2" sx={{ color: '#393939' }}>
+              چهلمین روز درگذشت مهندس چیت چیان
+            </Typography>
+          </Stack>
+          <Stack
+            direction="row"
+            sx={{
+              display: 'flex',
+              justifyContent: 'start',
+              width: '100%',
+            }}
+          >
+            <Typography variant="body2" sx={{ color: '#000' }}>
+              زمان برگزاری:
+            </Typography>
+            <Typography variant="body2" sx={{ color: '#393939' }}>
+              ۳ شهریورماه ۱۴۰۳ از ساعت ۱۴:۰۰ به مدت ۲ ساعت
+            </Typography>
+          </Stack>
+
+          <Stack
+            sx={{
+              position: 'absolute',
+              backgroundColor: 'white',
+              width: 110,
+              height: 110,
+              right: 40,
+              bottom: -40,
+              borderRadius: '50px 50px 0 0',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Image src="/assets/images/svg/yaadboodPerson.svg" alt="ddl" width={90} height={90} />
+          </Stack>
+        </Box>
+        <Box
+          sx={{
             p: 2,
             my: 3,
+            mt: 6,
             borderRadius: 3,
             display: 'flex',
             justifyContent: 'start',
