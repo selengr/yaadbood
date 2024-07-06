@@ -9,6 +9,7 @@ import {
   DialogTitle,
   Divider,
   FormControlLabel,
+  MenuItem,
   Radio,
   RadioGroup,
   Rating,
@@ -16,11 +17,13 @@ import {
   Typography,
 } from '@mui/material';
 
+const OPTIONS_TEST = [{ name: 'test1' }, { name: 'test2' }, { name: 'test3' }];
+
 // other
 import { motion } from 'framer-motion';
 
 // components
-import { RHFRadioGroup } from '@/components/hook-form';
+import { RHFRadioGroup, RHFSelect, RHFTextField } from '@/components/hook-form';
 
 // sections
 
@@ -41,23 +44,78 @@ const EventStepOne = ({ delta }: { delta: number }) => {
             xs: 'repeat(1, 1fr)',
             sm: 'repeat(2, 1fr)',
             md: 'repeat(3, 1fr)',
-            lg: 'repeat(4, 1fr)',
           }}
-          sx={{ direction: 'rtl', pt: 3 }}
+          sx={{ pt: 3 }}
         >
           <Stack
-            direction="row"
+            direction="column"
             sx={{
               display: 'flex',
               justifyContent: 'start',
             }}
           >
-            <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[500] }}>
-              شناسه :
+            <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
+              نام یادبود:
             </Typography>
-            <Typography sx={{ color: (theme) => theme.palette.grey[700] }} variant="body2">
-              &nbsp; {'---'}
+            <RHFTextField
+              name="insuranceTitle"
+              placeholder="مجلس ترحیم"
+              sx={{
+                '& .MuiInputBase-colorPrimary': {
+                  height: 55,
+                },
+              }}
+            />
+          </Stack>
+          <Stack
+            direction="column"
+            sx={{
+              display: 'flex',
+              justifyContent: 'start',
+            }}
+          >
+            <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
+              نوع یادبود:
             </Typography>
+
+            <RHFSelect name="areaId" placeholder="مجلس ترحیم">
+              <MenuItem sx={{ direction: 'ltr !important' }} value="">
+                یک گزینه انتخاب کنید
+              </MenuItem>
+              <Divider sx={{ borderStyle: 'dashed' }} />
+              {OPTIONS_TEST.map((option) => (
+                <MenuItem
+                  sx={{
+                    direction: 'ltr !important',
+                  }}
+                  key={option.name}
+                  value={option.name}
+                >
+                  {option.name}
+                </MenuItem>
+              ))}
+            </RHFSelect>
+          </Stack>
+
+          <Stack
+            direction="column"
+            sx={{
+              display: 'flex',
+              justifyContent: 'start',
+            }}
+          >
+            <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
+              نام متوفی:
+            </Typography>
+            <RHFTextField
+              name="insuranceTitle"
+              placeholder="مثلاً: اسماعیل چیت چیان"
+              sx={{
+                '& .MuiInputBase-colorPrimary': {
+                  height: 55,
+                },
+              }}
+            />
           </Stack>
         </Box>
       </motion.div>
