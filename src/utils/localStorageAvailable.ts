@@ -1,6 +1,7 @@
 // ----------------------------------------------------------------------
 
 export default function localStorageAvailable() {
+  if(!window) return false
   try {
     // Incognito mode might reject access to the localStorage for security reasons.
     // window isn't defined on Node.js

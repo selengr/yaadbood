@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from 'react';
 // @mui
 import { alpha, useTheme } from '@mui/material/styles';
@@ -7,7 +5,7 @@ import { Box, Divider, Drawer, Stack, Typography, Tooltip, IconButton } from '@m
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
 // config
-import { NAV } from 'config-global';
+import { NAV } from '../../../config-global';
 //
 import Iconify from '../../iconify';
 import Scrollbar from '../../scrollbar';

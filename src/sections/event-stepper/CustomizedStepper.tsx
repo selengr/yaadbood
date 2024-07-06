@@ -227,7 +227,7 @@ export default function CustomizedSteppers() {
             }}
           >
             <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-              {getStepContent(activeStep, delta)}
+              {getStepContent({ step: activeStep, delta: delta })}
             </FormProvider>
 
             <Stack
