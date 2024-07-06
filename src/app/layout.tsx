@@ -7,8 +7,8 @@ import { SettingsProvider, ThemeSettings } from '@/components/settings';
 // import 'react-spring-bottom-sheet/dist/style.css';
 
 export const metadata: Metadata = {
-  title: ' آسان درمان | درخواست خدمات پزشکی و درمانی در منزل',
-  description: 'آسان درمان | درخواست خدمات پزشکی و درمانی در منزل',
+  title: 'یادبود',
+  description: 'یادبود',
   icons: {
     icon: '/static/logo/LOGO.png',
   },
