@@ -176,7 +176,16 @@ export default function CustomizedSteppers() {
       <Box sx={{ mb: 5 }} />
 
       <Stepper
-        sx={{ width: '100%' }}
+        sx={{
+          width: '100%',
+
+          '& .MuiStepLabel-label.Mui-completed.MuiStepLabel-alternativeLabel': {
+            color: (theme) => theme.palette.primary.main,
+          },
+          '& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel': {
+            color: (theme) => theme.palette.primary.main,
+          },
+        }}
         alternativeLabel
         activeStep={activeStep}
         connector={<ColorlibConnector />}
