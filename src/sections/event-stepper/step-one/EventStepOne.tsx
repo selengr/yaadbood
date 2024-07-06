@@ -118,6 +118,112 @@ const EventStepOne = ({ delta }: { delta: number }) => {
             />
           </Stack>
         </Box>
+        <Box
+          rowGap={3}
+          columnGap={2}
+          display="grid"
+          gridTemplateColumns={{
+            xs: 'repeat(1, 1fr)',
+            sm: 'repeat(2, 1fr)',
+          }}
+          sx={{ pt: 3 }}
+        >
+          <Stack
+            direction="column"
+            sx={{
+              display: 'flex',
+              justifyContent: 'start',
+            }}
+          >
+            <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
+              درباره متوفی:
+            </Typography>
+            <RHFTextField
+              name="insuranceTitle"
+              rows={3}
+              multiline={true}
+              placeholder="مثلاً: پدری مهربان و دلسوز، استاد دانشگاه و ... ."
+            />
+          </Stack>
+        </Box>
+        <Box
+          rowGap={3}
+          columnGap={2}
+          display="grid"
+          gridTemplateColumns={{
+            xs: 'repeat(1, 1fr)',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)',
+          }}
+          sx={{ pt: 3 }}
+        >
+          <Stack
+            direction="column"
+            sx={{
+              display: 'flex',
+              justifyContent: 'start',
+            }}
+          >
+            <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
+              مدت زمان برگزاری:
+            </Typography>
+            <RHFSelect name="areaId" placeholder="مجلس ترحیم">
+              <MenuItem sx={{ direction: 'ltr !important' }} value="">
+                یک گزینه انتخاب کنید
+              </MenuItem>
+              <Divider sx={{ borderStyle: 'dashed' }} />
+              {OPTIONS_TEST.map((option) => (
+                <MenuItem
+                  sx={{
+                    direction: 'ltr !important',
+                  }}
+                  key={option.name}
+                  value={option.name}
+                >
+                  {option.name}
+                </MenuItem>
+              ))}
+            </RHFSelect>
+          </Stack>
+          <Stack
+            direction="column"
+            sx={{
+              display: 'flex',
+              justifyContent: 'start',
+            }}
+          >
+            <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
+              تاریخ برگزاری:
+            </Typography>
+            <RHFTextField
+              name="insuranceTitle"
+              sx={{
+                '& .MuiInputBase-colorPrimary': {
+                  height: 55,
+                },
+              }}
+            />
+          </Stack>
+          <Stack
+            direction="column"
+            sx={{
+              display: 'flex',
+              justifyContent: 'start',
+            }}
+          >
+            <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
+              ساعت برگزاری:
+            </Typography>
+            <RHFTextField
+              name="insuranceTitle"
+              sx={{
+                '& .MuiInputBase-colorPrimary': {
+                  height: 55,
+                },
+              }}
+            />
+          </Stack>
+        </Box>
       </motion.div>
     </div>
   );

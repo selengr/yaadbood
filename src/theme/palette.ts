@@ -36,7 +36,7 @@ const GREY = {
 };
 
 const PRIMARY = {
-  lighter: '#C8FACD',
+  lighter: '#EDF5FF', //yad
   light: '#5BE584',
   main: '#1758BA', // yad
   dark: '#007B55',

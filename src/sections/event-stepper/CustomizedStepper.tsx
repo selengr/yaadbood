@@ -27,12 +27,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormDataSchema } from './schema';
 import FormProvider from '@/components/hook-form/FormProvider';
 import { LoadingButton } from '@mui/lab';
-import OrderStepFour from './step-four/EventStepFour';
-import EventStepFive from './step-four/EventStepFour';
 import EventStepOne from './step-one/EventStepOne';
 import EventStepTwo from './step-two/EventStepTwo';
 import EventStepThree from './step-three/EventStepThree';
-import EventStepFour from './step-five/EventStepFive';
+import EventStepFour from './step-four/EventStepFour';
+import EventStepFive from './step-five/EventStepFive';
 
 // ----------------------------------------------------------------------
 
@@ -90,7 +89,7 @@ function getStepContent({ step, delta }: { step: number; delta: number }) {
 
 export default function CustomizedSteppers() {
   const [previousStep, setPreviousStep] = useState(0);
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(3);
   const delta: number = activeStep - previousStep;
 
   const defaultValues = useMemo(
@@ -153,7 +152,7 @@ export default function CustomizedSteppers() {
   return (
     <Box
       sx={{
-        width: '90%',
+        width: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -216,8 +215,12 @@ export default function CustomizedSteppers() {
           </Button>
         </>
       ) : (
-        <>
-          <Paper
+        <Stack
+          sx={{
+            width: '95%',
+          }}
+        >
+          {/* <Paper
             sx={{
               p: 3,
               my: 3,
@@ -225,54 +228,58 @@ export default function CustomizedSteppers() {
               minHeight: 120,
               // bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12)
             }}
-          >
-            <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-              {getStepContent({ step: activeStep, delta: delta })}
-            </FormProvider>
+          > */}
+          <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+            {getStepContent({ step: activeStep, delta: delta })}
+          </FormProvider>
 
-            <Stack
-              alignItems="flex-start"
+          <Stack
+            alignItems="flex-start"
+            sx={{
+              mt: 10,
+              display: 'flex',
+              flexDirection: 'row-reverse',
+              justifyContent: 'space-between',
+            }}
+          >
+            <LoadingButton
+              onClick={handleNext}
+              variant="contained"
               sx={{
-                mt: 3,
-                display: 'flex',
-                flexDirection: 'row-reverse',
-                justifyContent: 'space-between',
+                backgroundColor: (theme) => theme.palette.primary.main,
+                mr: 2,
+                color: '#FFF',
+                ':hover': {
+                  backgroundColor: (theme) => theme.palette.primary.main,
+                },
+                paddingY: 1.5,
+                paddingX: 6,
               }}
             >
-              <LoadingButton
-                onClick={handleNext}
-                variant="contained"
-                sx={{
+              {/* {!isEdit ? 'افزودن' : 'ثبت تغیرات'} */}
+              {activeStep === STEPS.length - 1 ? 'اتمام' : 'مرحله بعد'}
+            </LoadingButton>
+            <LoadingButton
+              type="button"
+              variant="contained"
+              disabled={activeStep === 0}
+              onClick={handleBack}
+              sx={{
+                backgroundColor: (theme) => theme.palette.primary.main,
+                border: (theme) => `solid 2px ${theme.palette.background.neutral}`,
+                color: '#FFF',
+                ':hover': {
                   backgroundColor: (theme) => theme.palette.primary.main,
-                  mr: 2,
-                  color: '#FFF',
-                  ':hover': {
-                    backgroundColor: (theme) => theme.palette.primary.main,
-                  },
-                }}
-              >
-                {/* {!isEdit ? 'افزودن' : 'ثبت تغیرات'} */}
-                {activeStep === STEPS.length - 1 ? 'اتمام' : 'مرحله بعد'}
-              </LoadingButton>
-              <LoadingButton
-                type="button"
-                variant="contained"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{
-                  backgroundColor: (theme) => theme.palette.primary.main,
-                  border: (theme) => `solid 2px ${theme.palette.background.neutral}`,
-                  color: '#FFF',
-                  ':hover': {
-                    backgroundColor: (theme) => theme.palette.primary.main,
-                  },
-                }}
-              >
-                مرحله قبل
-              </LoadingButton>
-            </Stack>
-          </Paper>
-        </>
+                },
+                paddingY: 1.5,
+                paddingX: 6,
+              }}
+            >
+              مرحله قبل
+            </LoadingButton>
+          </Stack>
+          {/* </Paper> */}
+        </Stack>
       )}
     </Box>
   );

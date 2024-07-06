@@ -73,7 +73,7 @@ export default function Input(theme: Theme) {
           '&.Mui-focused': {
             '& .MuiOutlinedInput-notchedOutline': {
               borderWidth: 1,
-              borderColor: theme.palette.text.primary,
+              borderColor: theme.palette.primary.main,
             },
           },
           '&.Mui-disabled': {
