@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { useMemo, useState } from 'react';
 // @mui
@@ -71,7 +71,7 @@ type FormValuesProps = {
 };
 // --------------------------------------------------------
 
-function getStepContent({ step, delta }: { step: number, delta: number }) {
+function getStepContent({ step, delta }: { step: number; delta: number }) {
   switch (step) {
     case 0:
       return <EventStepOne delta={delta} />;
@@ -91,7 +91,7 @@ function getStepContent({ step, delta }: { step: number, delta: number }) {
 export default function CustomizedSteppers() {
   const [previousStep, setPreviousStep] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
-  const delta : number = activeStep - previousStep;
+  const delta: number = activeStep - previousStep;
 
   const defaultValues = useMemo(
     () => ({
@@ -152,8 +152,8 @@ export default function CustomizedSteppers() {
 
   return (
     <Box
-    sx={{
-        width : "90%",
+      sx={{
+        width: '90%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -175,7 +175,12 @@ export default function CustomizedSteppers() {
 
       <Box sx={{ mb: 5 }} />
 
-      <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector />}>
+      <Stepper
+        sx={{ width: '100%' }}
+        alternativeLabel
+        activeStep={activeStep}
+        connector={<ColorlibConnector />}
+      >
         {STEPS.map((item) => (
           <Step key={item.id}>
             <StepLabel StepIconComponent={ColorlibStepIcon}>{item.name}</StepLabel>
@@ -189,6 +194,7 @@ export default function CustomizedSteppers() {
             sx={{
               p: 3,
               my: 3,
+              width: '100%',
               minHeight: 120,
               bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
             }}
@@ -206,30 +212,38 @@ export default function CustomizedSteppers() {
             sx={{
               p: 3,
               my: 3,
+              width: '100%',
               minHeight: 120,
               // bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12)
             }}
           >
             <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-              {getStepContent(activeStep, delta )}
+              {getStepContent(activeStep, delta)}
             </FormProvider>
 
-            <Stack alignItems="flex-start" sx={{ mt: 3, display: 'flex', flexDirection: 'row' }}>
+            <Stack
+              alignItems="flex-start"
+              sx={{
+                mt: 3,
+                display: 'flex',
+                flexDirection: 'row-reverse',
+                justifyContent: 'space-between',
+              }}
+            >
               <LoadingButton
                 onClick={handleNext}
-                // type="submit"
                 variant="contained"
-                // loading={isSubmitting}
                 sx={{
-                  backgroundColor: '#2563EB',
+                  backgroundColor: (theme) => theme.palette.primary.main,
                   mr: 2,
+                  color: '#FFF',
                   ':hover': {
-                    backgroundColor: '#2563EB',
+                    backgroundColor: (theme) => theme.palette.primary.main,
                   },
                 }}
               >
                 {/* {!isEdit ? 'افزودن' : 'ثبت تغیرات'} */}
-                {activeStep === STEPS.length - 1 ? 'اتمام' : 'بعدی'}
+                {activeStep === STEPS.length - 1 ? 'اتمام' : 'مرحله بعد'}
               </LoadingButton>
               <LoadingButton
                 type="button"
@@ -237,15 +251,15 @@ export default function CustomizedSteppers() {
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 sx={{
-                  backgroundColor: 'transparent',
+                  backgroundColor: (theme) => theme.palette.primary.main,
                   border: (theme) => `solid 2px ${theme.palette.background.neutral}`,
-                  color: '#525252',
+                  color: '#FFF',
                   ':hover': {
-                    backgroundColor: 'transparent',
+                    backgroundColor: (theme) => theme.palette.primary.main,
                   },
                 }}
               >
-                قبلی
+                مرحله قبل
               </LoadingButton>
             </Stack>
           </Paper>

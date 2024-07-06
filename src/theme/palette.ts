@@ -28,7 +28,7 @@ const GREY = {
   200: '#F4F6F8',
   300: '#DFE3E8',
   400: '#C4CDD5',
-  500: '#BBBBBB', // ps
+  500: '#A8A8A8', // yad
   600: '#6A6A6A', // ps
   700: '#454F5B',
   800: '#353535', // ps
@@ -38,7 +38,7 @@ const GREY = {
 const PRIMARY = {
   lighter: '#C8FACD',
   light: '#5BE584',
-  main: '#433792', // ps
+  main: '#1758BA', // yad
   dark: '#007B55',
   // darker: '#005249',
   darker: '#f7f7f7',

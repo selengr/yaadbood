@@ -9,6 +9,7 @@ const page = () => {
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
+        width: "100%"
       }}
     >
       <Stack
