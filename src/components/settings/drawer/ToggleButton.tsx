@@ -5,7 +5,7 @@ import { Tooltip, Box } from '@mui/material';
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
 //
-import { IconButtonAnimate } from '../../animate';
+// import { IconButtonAnimate } from '../../animate';
 import SvgColor from '../../svg-color';
 //
 import BadgeDot from './BadgeDot';
@@ -53,12 +53,12 @@ export default function ToggleButton({ notDefault, open, onToggle }: Props) {
           }}
         />
       )}
-
+{/* 
       <Tooltip title="Settings">
         <IconButtonAnimate color="primary" onClick={onToggle} sx={{ p: 1.25 }}>
           <SvgColor src="/assets/icons/setting/ic_setting.svg" />
         </IconButtonAnimate>
-      </Tooltip>
+      </Tooltip> */}
     </Box>
   );
 }

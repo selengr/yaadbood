@@ -5,7 +5,7 @@ import { Box, Divider, Drawer, Stack, Typography, Tooltip, IconButton } from '@m
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
 // config
-import { NAV } from '../../../config-global';
+// import { NAV } from '@/config-global';
 //
 import Iconify from '../../iconify';
 import Scrollbar from '../../scrollbar';
@@ -22,6 +22,7 @@ import ContrastOptions from './ContrastOptions';
 import DirectionOptions from './DirectionOptions';
 import FullScreenOptions from './FullScreenOptions';
 import ColorPresetsOptions from './ColorPresetsOptions';
+import { NAV } from 'config-global';
 
 // ----------------------------------------------------------------------
 
