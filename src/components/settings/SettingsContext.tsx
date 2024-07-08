@@ -1,5 +1,3 @@
-'use client'
-
 import { useMemo, useState, useEffect, useContext, useCallback, createContext } from 'react';
 // utils
 import localStorageAvailable from '../../utils/localStorageAvailable';

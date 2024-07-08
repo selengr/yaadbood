@@ -89,7 +89,7 @@ function getStepContent({ step, delta }: { step: number; delta: number }) {
 
 export default function CustomizedSteppers() {
   const [previousStep, setPreviousStep] = useState(0);
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const delta: number = activeStep - previousStep;
 
   const defaultValues = useMemo(

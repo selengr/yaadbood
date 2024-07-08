@@ -95,7 +95,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = () => {
         backgroundColor: 'white',
         display: 'flex',
         direction: 'rtl',
-        maxWidth: 450,
+        maxWidth: 550,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',

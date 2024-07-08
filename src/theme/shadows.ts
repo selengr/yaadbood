@@ -1,5 +1,3 @@
-"use client"
-
 // @mui
 import { alpha, Shadows } from '@mui/material/styles';
 //

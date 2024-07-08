@@ -17,7 +17,8 @@ import {
   Typography,
 } from '@mui/material';
 
-const OPTIONS_TEST = [{ name: 'test1' }, { name: 'test2' }, { name: 'test3' }];
+const OPTIONS_TEST = [{ name: 'FUNERAL' }, { name: 'test2' }, { name: 'test3' }];
+const CEREMONY_DURATION = [{ id: 1, value: '30دقیقه' }, { id: 1, value: 'ساعت1' },{ id: 1, value: 'ساعت2' },{ id: 1, value: '3ساعت' },{ id: 1, value: '4ساعت' }];
 
 // other
 import { motion } from 'framer-motion';
@@ -58,7 +59,7 @@ const EventStepOne = ({ delta }: { delta: number }) => {
               نام یادبود:
             </Typography>
             <RHFTextField
-              name="insuranceTitle"
+              name="title"
               placeholder="مجلس ترحیم"
               sx={{
                 '& .MuiInputBase-colorPrimary': {
@@ -78,7 +79,7 @@ const EventStepOne = ({ delta }: { delta: number }) => {
               نوع یادبود:
             </Typography>
 
-            <RHFSelect name="areaId" placeholder="مجلس ترحیم">
+            <RHFSelect name="roomTypeEnum" placeholder="مجلس ترحیم">
               <MenuItem sx={{ direction: 'ltr !important' }} value="">
                 یک گزینه انتخاب کنید
               </MenuItem>
@@ -108,7 +109,7 @@ const EventStepOne = ({ delta }: { delta: number }) => {
               نام متوفی:
             </Typography>
             <RHFTextField
-              name="insuranceTitle"
+              name="deadName"
               placeholder="مثلاً: اسماعیل چیت چیان"
               sx={{
                 '& .MuiInputBase-colorPrimary': {
@@ -139,7 +140,7 @@ const EventStepOne = ({ delta }: { delta: number }) => {
               درباره متوفی:
             </Typography>
             <RHFTextField
-              name="insuranceTitle"
+              name="deadAbout"
               rows={3}
               multiline={true}
               placeholder="مثلاً: پدری مهربان و دلسوز، استاد دانشگاه و ... ."
@@ -167,20 +168,20 @@ const EventStepOne = ({ delta }: { delta: number }) => {
             <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
               مدت زمان برگزاری:
             </Typography>
-            <RHFSelect name="areaId" placeholder="مجلس ترحیم">
+            <RHFSelect name="ceremonyDuration" placeholder="مجلس ترحیم">
               <MenuItem sx={{ direction: 'ltr !important' }} value="">
                 یک گزینه انتخاب کنید
               </MenuItem>
               <Divider sx={{ borderStyle: 'dashed' }} />
-              {OPTIONS_TEST.map((option) => (
+              {CEREMONY_DURATION.map((option) => (
                 <MenuItem
                   sx={{
                     direction: 'ltr !important',
                   }}
-                  key={option.name}
-                  value={option.name}
+                  key={option.value}
+                  value={option.value}
                 >
-                  {option.name}
+                  {option.value}
                 </MenuItem>
               ))}
             </RHFSelect>
@@ -196,7 +197,7 @@ const EventStepOne = ({ delta }: { delta: number }) => {
               تاریخ برگزاری:
             </Typography>
             <RHFTextField
-              name="insuranceTitle"
+              name="date"
               sx={{
                 '& .MuiInputBase-colorPrimary': {
                   height: 55,
@@ -215,7 +216,7 @@ const EventStepOne = ({ delta }: { delta: number }) => {
               ساعت برگزاری:
             </Typography>
             <RHFTextField
-              name="insuranceTitle"
+              name="startTime"
               sx={{
                 '& .MuiInputBase-colorPrimary': {
                   height: 55,

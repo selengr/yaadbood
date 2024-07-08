@@ -17,6 +17,7 @@ export default function Input(theme: Theme) {
           '&::placeholder': {
             opacity: 1,
             color: theme.palette.text.disabled,
+            fontSize: 12
           },
         },
       },
@@ -74,6 +75,7 @@ export default function Input(theme: Theme) {
             '& .MuiOutlinedInput-notchedOutline': {
               borderWidth: 1,
               borderColor: theme.palette.primary.main,
+              boxShadow: '0px 0px 0px 4px rgba(204, 251, 241, 0.3)'
             },
           },
           '&.Mui-disabled': {
@@ -81,6 +83,8 @@ export default function Input(theme: Theme) {
               borderColor: theme.palette.action.disabledBackground,
             },
           },
+          borderRadius:20,
+          backgroundColor: "#FFF"
         },
       },
     },

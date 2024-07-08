@@ -46,11 +46,14 @@ export function responsiveFontSizes({ sm, md, lg }: { sm: number; md: number; lg
 // https://nextjs.org/docs/basic-features/font-optimization#google-fonts
 
 const typography = {
-  // fontFamily: "primaryFont.style.fontFamily",
-  fontFamily: "IRANSans !important",
+  // fontFamily: primaryFont.style.fontFamily,
+  fontFamily: "IRANSans",
+  fontWeightUltraLight: 200,
+  fontWeightLight: 300,
   fontWeightRegular: 400,
-  fontWeightMedium: 600,
+  fontWeightMedium: 500,
   fontWeightBold: 700,
+  fontWeightBlack: 800,
   h1: {
     fontWeight: 800,
     lineHeight: 80 / 64,
