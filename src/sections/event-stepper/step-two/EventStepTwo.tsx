@@ -1,28 +1,56 @@
-"use client"
+'use client';
 
-import MusicPlayer from '@/components/music-player/MusicPlayer';
+import AudioPlayer from '@/components/audio-player/AudioPlayer';
+import { RHFCheckbox } from '@/components/hook-form';
+import { Box, Stack, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 
-const EventStepTwo = ({
-     delta
-}: {
-     delta: number;
-}) => {
-    
+const EventStepTwo = ({ delta }: { delta: number }) => {
+  return (
+    <div>
+      <motion.div
+        initial={{ x: delta >= 0 ? '50%' : '-50%', opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+      >
+        <Box
+          sx={{
+            p: 3,
+            my: 3,
+            borderRadius: 3,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+            width: '100%',
+            gap: 3,
+            bgcolor: (theme) => theme.palette.primary.lighter,
+          }}
+        >
+          {[1, 2, 3].map((item, index) => (
+            <Stack
+              direction="row"
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: 3,
+                width: '100%',
+              }}
+            >
+              <Typography variant="body1" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
+                صوت شماره {index}:
+              </Typography>
 
-    
+              <AudioPlayer />
 
-     return (
-          <div>
-               <motion.div
-                    initial={{ x: delta >= 0 ? '50%' : '-50%', opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-               >
-                  <MusicPlayer src='https://soundcloud.com/free-music-for-videos/pop-music-for-videos-happy-upbeat-pop-music'/>
-               </motion.div>
-          </div>
-     );
+              <RHFCheckbox name="checkbox" label="" />
+            </Stack>
+          ))}
+        </Box>
+      </motion.div>
+    </div>
+  );
 };
 
 export default EventStepTwo;
