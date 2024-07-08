@@ -70,10 +70,10 @@ type FormValuesProps = {
 };
 // --------------------------------------------------------
 
-function getStepContent({ step, delta }: { step: number; delta: number }) {
+function getStepContent({ step, delta, setValue }: { step: number; delta: number; setValue: any }) {
   switch (step) {
     case 0:
-      return <EventStepOne delta={delta} />;
+      return <EventStepOne delta={delta} setValue={setValue} />;
     case 1:
       return <EventStepTwo delta={delta} />;
     case 2:
@@ -115,6 +115,7 @@ export default function CustomizedSteppers() {
     reset,
     handleSubmit,
     trigger,
+    setValue,
     formState: { isSubmitting, errors },
   } = methods;
 
@@ -230,7 +231,7 @@ export default function CustomizedSteppers() {
             }}
           > */}
           <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-            {getStepContent({ step: activeStep, delta: delta })}
+            {getStepContent({ step: activeStep, delta: delta, setValue: setValue })}
           </FormProvider>
 
           <Stack

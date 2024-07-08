@@ -17,8 +17,19 @@ import {
   Typography,
 } from '@mui/material';
 
+import { DatePickerMui } from '@/components/datePicker/DatePickerMui';
+
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali';
+
 const OPTIONS_TEST = [{ name: 'FUNERAL' }, { name: 'test2' }, { name: 'test3' }];
-const CEREMONY_DURATION = [{ id: 1, value: '30دقیقه' }, { id: 1, value: 'ساعت1' },{ id: 1, value: 'ساعت2' },{ id: 1, value: '3ساعت' },{ id: 1, value: '4ساعت' }];
+const CEREMONY_DURATION = [
+  { id: 1, value: '30دقیقه' },
+  { id: 1, value: 'ساعت1' },
+  { id: 1, value: 'ساعت2' },
+  { id: 1, value: '3ساعت' },
+  { id: 1, value: '4ساعت' },
+];
 
 // other
 import { motion } from 'framer-motion';
@@ -28,7 +39,7 @@ import { RHFRadioGroup, RHFSelect, RHFTextField } from '@/components/hook-form';
 
 // sections
 
-const EventStepOne = ({ delta }: { delta: number }) => {
+const EventStepOne = ({ delta, setValue }: { delta: number; setValue: any }) => {
   return (
     <div className="flex w-full items-end flex-col">
       <motion.div
@@ -196,15 +207,30 @@ const EventStepOne = ({ delta }: { delta: number }) => {
             <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
               تاریخ برگزاری:
             </Typography>
-            <RHFTextField
+            {/* <RHFTextField
               name="date"
               sx={{
                 '& .MuiInputBase-colorPrimary': {
                   height: 55,
                 },
               }}
-            />
+            /> */}
+
+            <LocalizationProvider dateAdapter={AdapterDateFnsJalali}>
+              <DatePickerMui
+                onChange={(date: any) => {
+                  let val = new Date(date).toISOString().split('T')[0].toString();
+
+                  setValue('date', val);
+                }}
+                // onChange={(date: any) => {
+                //   setValue('date', new Date(date).toISOString().split('T')[0].toString())
+                // }}
+                placeholder="تاریخ برگزاری:"
+              />
+            </LocalizationProvider>
           </Stack>
+
           <Stack
             direction="column"
             sx={{
