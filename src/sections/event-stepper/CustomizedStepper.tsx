@@ -254,7 +254,8 @@ export default function CustomizedSteppers() {
                   backgroundColor: (theme) => theme.palette.primary.main,
                 },
                 paddingY: 1.5,
-                paddingX: 6,
+                paddingX: { xs: 3, sm: 6 },
+                fontWeight: 400,
               }}
             >
               {/* {!isEdit ? 'افزودن' : 'ثبت تغیرات'} */}
@@ -273,7 +274,9 @@ export default function CustomizedSteppers() {
                   backgroundColor: (theme) => theme.palette.primary.main,
                 },
                 paddingY: 1.5,
-                paddingX: 6,
+                paddingX: { xs: 3, sm: 6 },
+                fontWeight: 400,
+                // fontSize :10
               }}
             >
               مرحله قبل

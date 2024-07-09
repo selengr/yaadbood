@@ -2,10 +2,13 @@
 
 import AudioPlayer from '@/components/audio-player/AudioPlayer';
 import { RHFCheckbox } from '@/components/hook-form';
+import useResponsive from '@/hooks/useResponsive';
 import { Box, Stack, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 
 const EventStepTwo = ({ delta }: { delta: number }) => {
+  const isMobile = useResponsive('down', 'sm');
+
   return (
     <div>
       <motion.div
@@ -29,22 +32,55 @@ const EventStepTwo = ({ delta }: { delta: number }) => {
         >
           {[1, 2, 3].map((item, index) => (
             <Stack
-              direction="row"
+              // direction="row"
               sx={{
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 gap: 3,
                 width: '100%',
+                flexDirection: { xs: 'column', sm: 'row' },
               }}
             >
-              <Typography variant="body1" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
-                صوت شماره {index}:
-              </Typography>
+              {isMobile && (
+                <>
+                  <Stack
+                    // direction="row"
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'start',
+                      width: '100%',
+                    }}
+                  >
+                    <div className="flex flex-row items-center justify-center">
+                      <RHFCheckbox name="checkbox" label="" />
+                      <Typography
+                        variant="body1"
+                        sx={{ color: (theme) => theme.palette.grey[800] }}
+                      >
+                        صوت شماره {index}:
+                      </Typography>
+                    </div>
 
-              <AudioPlayer />
+                    <AudioPlayer />
+                  </Stack>
+                </>
+              )}
+              {!isMobile && (
+                <>
+                  <Typography
+                    variant="body1"
+                    sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}
+                  >
+                    صوت شماره {index}:
+                  </Typography>
 
-              <RHFCheckbox name="checkbox" label="" />
+                  <AudioPlayer />
+
+                  <RHFCheckbox name="checkbox" label="" />
+                </>
+              )}
             </Stack>
           ))}
         </Box>

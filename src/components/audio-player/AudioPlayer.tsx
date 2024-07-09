@@ -110,9 +110,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = () => {
           direction: 'rtl',
           justifyContent: 'center',
           alignItems: 'center',
-
-          // minWidth: 450,
-
           width: '100%',
         }}
       >
