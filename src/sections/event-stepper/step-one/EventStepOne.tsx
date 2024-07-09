@@ -17,8 +17,12 @@ import {
   Typography,
 } from '@mui/material';
 
+import dayjs from 'dayjs';
+
 import { DatePickerMui } from '@/components/datePicker/DatePickerMui';
 
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali';
 
@@ -241,14 +245,24 @@ const EventStepOne = ({ delta, setValue }: { delta: number; setValue: any }) => 
             <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
               ساعت برگزاری:
             </Typography>
-            <RHFTextField
+            {/* <RHFTextField
               name="startTime"
               sx={{
                 '& .MuiInputBase-colorPrimary': {
                   height: 55,
                 },
               }}
-            />
+            /> */}
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <MobileTimePicker
+                defaultValue={dayjs('2022-04-17T15:30')}
+                localeText={{
+                  okButtonLabel: 'ثبت',
+                  cancelButtonLabel: 'انصراف',
+                  toolbarTitle: 'ساعت',
+                }}
+              />
+            </LocalizationProvider>
           </Stack>
         </Box>
       </motion.div>
