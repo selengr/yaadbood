@@ -32,6 +32,7 @@ import EventStepTwo from './step-two/EventStepTwo';
 import EventStepThree from './step-three/EventStepThree';
 import EventStepFour from './step-four/EventStepFour';
 import EventStepFive from './step-five/EventStepFive';
+import { FuneralModel } from '@/@types/event_maker';
 
 // ----------------------------------------------------------------------
 
@@ -61,13 +62,7 @@ const STEPS = [
 ];
 
 // --------------------------------------------------------
-type FormValuesProps = {
-  stepOne?: string;
-  stepTwo?: string;
-  stepThree?: string;
-  stepFour?: string;
-  stepFive?: string;
-};
+interface FormValuesProps extends FuneralModel {}
 // --------------------------------------------------------
 
 function getStepContent({ step, delta, setValue }: { step: number; delta: number; setValue: any }) {
