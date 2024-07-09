@@ -1,7 +1,8 @@
 import { toast } from 'sonner';
 import { BASE_URL_API } from 'config-global';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { getToken, handelErrorsApi, removeToken } from '@/helpers';
+import { handelErrorsApi } from '@/helpers/handelErrorsApi';
+import { getToken, removeToken } from '@/helpers/tokenHelper';
 
 interface IApiError {
   status: number;
