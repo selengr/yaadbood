@@ -27,17 +27,18 @@ export interface Date {
   
   export interface FuneralModel {
     title: string;
-    roomTypeEnum: 'FUNERAL';
+    roomTypeEnum: 'FUNERAL'|string;
     deadName: string | null;
     deadImg: string; // assuming uuid is a string
     deadAbout: string;
     ceremonyDuration: number;
-    date: Date;
+    date: Date|null;
     startTime: string;
-    mediaList: number[];
+    //Step2 MediaInformationModel
+    mediaList: number[]|null;
     dedicatedSound: string; // assuming uuid is a string
-    privateMediaList: Media[];
-    presentersModelList: Presenter[];
-    specialGuestModelList: SpecialGuest[];
+    privateMediaList: Media[]|null;
+    presentersModelList: Presenter[]|null;
+    specialGuestModelList: SpecialGuest[]|null;
     abilityList: null | any[]; // assuming abilityList can be null or an array of any type
   }

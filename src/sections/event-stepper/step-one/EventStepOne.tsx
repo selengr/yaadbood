@@ -26,7 +26,7 @@ import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali';
 
-const OPTIONS_TEST = [{ name: 'FUNERAL' }, { name: 'test2' }, { name: 'test3' }];
+const OPTIONS_TEST = [{ name: 'FUNERAL', label: 'مجلس ترحیم' }];
 const CEREMONY_DURATION = [
   { id: 1, value: '30دقیقه' },
   { id: 1, value: 'ساعت1' },
@@ -59,7 +59,7 @@ const EventStepOne = ({ delta, setValue }: { delta: number; setValue: any }) => 
           gridTemplateColumns={{
             xs: 'repeat(1, 1fr)',
             sm: 'repeat(2, 1fr)',
-            md: 'repeat(3, 1fr)',
+            // md: 'repeat(3, 1fr)',
           }}
           sx={{ pt: 3 }}
         >
@@ -75,7 +75,7 @@ const EventStepOne = ({ delta, setValue }: { delta: number; setValue: any }) => 
             </Typography>
             <RHFTextField
               name="title"
-              placeholder="مجلس ترحیم"
+              placeholder="مثلاً: مراسم بزرگداشت شهید شریعتی"
               sx={{
                 '& .MuiInputBase-colorPrimary': {
                   height: 55,
@@ -94,7 +94,7 @@ const EventStepOne = ({ delta, setValue }: { delta: number; setValue: any }) => 
               نوع یادبود:
             </Typography>
 
-            <RHFSelect name="roomTypeEnum" placeholder="مجلس ترحیم">
+            <RHFSelect name="roomTypeEnum">
               <MenuItem sx={{ direction: 'ltr !important' }} value="">
                 یک گزینه انتخاب کنید
               </MenuItem>
@@ -107,7 +107,7 @@ const EventStepOne = ({ delta, setValue }: { delta: number; setValue: any }) => 
                   key={option.name}
                   value={option.name}
                 >
-                  {option.name}
+                  {option.label}
                 </MenuItem>
               ))}
             </RHFSelect>
@@ -140,7 +140,6 @@ const EventStepOne = ({ delta, setValue }: { delta: number; setValue: any }) => 
           display="grid"
           gridTemplateColumns={{
             xs: 'repeat(1, 1fr)',
-            sm: 'repeat(2, 1fr)',
           }}
           sx={{ pt: 3 }}
         >

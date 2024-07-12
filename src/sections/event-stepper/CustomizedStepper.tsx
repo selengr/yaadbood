@@ -90,11 +90,21 @@ export default function CustomizedSteppers() {
   const defaultValues = useMemo(
     () => ({
       // step one
-      stepOne: '',
-      stepTwo: '',
-      stepThree: '',
-      stepFour: '',
-      stepFive: '',
+      title: '',
+      roomTypeEnum: '',
+      deadName: '',
+      deadImg: '',
+      ceremonyDuration: 0,
+      date: null,
+      startTime: '',
+
+      //Step2 MediaInformationModel
+      mediaList: [],
+      dedicatedSound: '',
+      privateMediaList: null,
+      presentersModelList: null,
+      specialGuestModelList: null,
+      abilityList: null,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     // [currentUserList]
