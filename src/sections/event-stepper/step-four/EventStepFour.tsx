@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { IContentModel } from '@/@types/event_maker';
 import { callApiContentModel } from '@/services/apis/builder';
 import { Box, Checkbox, Stack, Typography, Radio } from '@mui/material';
+import { _abilityList } from '@/_mock/arrays/_yaadbood';
 
 const EventStepFour = ({
   delta,
@@ -24,8 +25,11 @@ const EventStepFour = ({
       try {
         let res = await callApiContentModel();
         setAbilityList(res.data.content);
-        if(window) localStorage.setItem('feature-recovery',JSON.stringify(res.data.content))
-      } catch (error) {}
+        if (window) localStorage.setItem('feature-recovery', JSON.stringify(res.data.content));
+      } catch (error) {
+        setAbilityList(_abilityList.content);
+        if (window) localStorage.setItem('feature-recovery', JSON.stringify(_abilityList.content));
+      }
     }
     getMediaList();
   }, []);

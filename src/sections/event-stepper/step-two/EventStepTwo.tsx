@@ -1,6 +1,7 @@
 'use client';
 
 import { IAudioContent } from '@/@types/event_maker';
+import { _mediaList } from '@/_mock/arrays/_yaadbood';
 import AudioPlayer from '@/components/audio-player/AudioPlayer';
 import ConfirmDialog from '@/components/confirm-dialog';
 import { RHFCheckbox, RHFTextField } from '@/components/hook-form';
@@ -35,7 +36,9 @@ const EventStepTwo = ({
       try {
         let res = await callApiMediaList();
         setMediaList(res.data.content);
-      } catch (error) {}
+      } catch (error) {
+        setMediaList(_mediaList.content);
+      }
     }
     getMediaList();
   }, []);
@@ -350,7 +353,6 @@ const EventStepTwo = ({
           </Button>
         }
       />
-     
     </div>
   );
 };

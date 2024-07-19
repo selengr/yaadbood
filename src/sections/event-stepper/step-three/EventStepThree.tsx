@@ -64,7 +64,6 @@ const EventStepThree = ({
   };
 
   console.log('watch() :>> ', watch());
-  console.log('PresentersList[PresentersList.length - 1] :>> ', PresentersList.length - 1);
 
   return (
     <div>
