@@ -2,7 +2,7 @@ import { Control } from "react-hook-form";
 
 
 export interface IGetStepContentProps {
-  step: 0 | 1 | 2 | 3 | 4;
+  step: 0 | 1 | 2 | 3 | 4 | number;
   delta: number;
   setValue: (name: string, value: any) => void;
   errors: { [key: string]: string | any };

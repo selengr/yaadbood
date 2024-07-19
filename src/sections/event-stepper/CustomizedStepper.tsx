@@ -124,16 +124,6 @@ function getStepContent({
           setValue={setValue}
         />
       );
-    // case 5:
-    //   return (
-    //     <EventStepSix
-    //       delta={delta}
-    //       control={control}
-    //       getValues={getValues}
-    //       watch={watch}
-    //       setValue={setValue}
-    //     />
-    //   );
     default:
       return 'Unknown step';
   }
@@ -142,7 +132,7 @@ function getStepContent({
 export default function CustomizedSteppers() {
   const { push } = useRouter();
   const [previousStep, setPreviousStep] = useState(0);
-  const [activeStep, setActiveStep] = useState<0 | 1 | 2 | 3 | 4>(0);
+  const [activeStep, setActiveStep] = useState<number>(0);
   const [openDialog, setOpenDialog] = useState(false);
   const [loading, setLoading] = useState(false);
   const delta: number = activeStep - previousStep;
@@ -215,6 +205,7 @@ export default function CustomizedSteppers() {
   } = methods;
 
   console.log('errors :>> ', errors);
+  console.log('watch() the result :>> ', watch());
 
   const processForm: any = async (data: any) => {
     setLoading(true);
@@ -257,8 +248,6 @@ export default function CustomizedSteppers() {
   const handleReset = () => {
     setActiveStep(0);
   };
-
-  console.log('watch() :>> ', watch());
 
   return (
     <Box

@@ -47,8 +47,6 @@ const EventStepThree = ({
     setPresentersList(PresentersList.filter((_, i) => i !== index));
   };
 
-  console.log('watch() :>> ', watch());
-
   return (
     <div>
       <motion.div

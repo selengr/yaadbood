@@ -48,9 +48,6 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
     getMediaList();
   }, []);
 
-  console.log('watch :>> ', watch());
-  console.log('value----- :>> ');
-
   return (
     <div>
       <motion.div

@@ -34,8 +34,6 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
     getMediaList();
   }, []);
 
-  console.log('watch() reza:>> ', watch());
-
   return (
     <div>
       <motion.div

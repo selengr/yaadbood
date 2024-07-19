@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import { LoadingButton } from '@mui/lab';
 import { enqueueSnackbar } from 'notistack';
+
+// components
 import Iconify from '@/components/iconify/Iconify';
 import SvgColor from '@/components/svg-color/SvgColor';
+// hooks
 import useCopyToClipboard from '@/hooks/useCopyToClipboard';
+// mui
 import { Box, Dialog, IconButton, Stack, Tab, Tabs, TextField } from '@mui/material';
 
 // ----------------------------------------------------------------------
@@ -20,6 +24,14 @@ const TABS = [
     label: 'عمومی',
   },
 ];
+
+interface EventStepSixModalProps {
+  handleNext: (link: string) => void;
+  openDialog: boolean;
+  setValue: (name: string, value: any) => void;
+  setLoading: (loading: boolean) => void;
+  loading: boolean;
+}
 // ----------------------------------------------------------------------
 
 const EventStepSixModal = ({
@@ -28,13 +40,7 @@ const EventStepSixModal = ({
   setValue,
   setLoading,
   loading,
-}: {
-  handleNext: any;
-  openDialog: any;
-  setValue: any;
-  setLoading: any;
-  loading: any;
-}) => {
+}: EventStepSixModalProps) => {
   const [currentTab, setCurrentTab] = useState('false');
 
   const [link, setLink] = useState('https://mresalat.ir/yaadbood/event/1');
