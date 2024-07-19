@@ -1,38 +1,29 @@
 import { useState } from 'react';
 
 // mui
-import {
-  Alert,
-  Box,
-  Button,
-  Dialog,
-  DialogTitle,
-  Divider,
-  FormControlLabel,
-  IconButton,
-  MenuItem,
-  Radio,
-  RadioGroup,
-  Rating,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Divider, IconButton, MenuItem, Stack, Typography } from '@mui/material';
 
-import { DatePickerMui } from '@/components/datePicker/DatePickerMui';
+import { motion } from 'framer-motion';
+// components
+import ConfirmDialog from '@/components/confirm-dialog';
+import SvgColor from '@/components/svg-color/SvgColor';
+import { RHFSelect, RHFTextField } from '@/components/hook-form';
+import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
 
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali';
-
+// --------------------------------------------------------
 const OPTIONS_POST_TYPE = [
   { name: 'HOST', label: 'میزبان' },
   { name: 'GUEST', label: 'میهان' },
 ];
-
-import { motion } from 'framer-motion';
-import { RHFSelect, RHFTextField } from '@/components/hook-form';
-import SvgColor from '@/components/svg-color/SvgColor';
-import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
-import ConfirmDialog from '@/components/confirm-dialog';
+interface EventStepThreeProps {
+  delta: number;
+  setValue: (name: string, value: any) => void;
+  watch: (name?: string) => any;
+  getValues: any;
+  unregister: (name: string) => void;
+  control: { [key: string]: any };
+}
+// --------------------------------------------------------
 
 const EventStepThree = ({
   delta,
@@ -41,14 +32,7 @@ const EventStepThree = ({
   getValues,
   unregister,
   control,
-}: {
-  delta: number;
-  setValue: any;
-  watch: any;
-  getValues: any;
-  unregister: any;
-  control: any;
-}) => {
+}: EventStepThreeProps) => {
   const [indexPresenters, setIndexPresenters] = useState<number>();
   const [addImage, setAddImage] = useState();
   const [openDialog, setOpenDialog] = useState(false);

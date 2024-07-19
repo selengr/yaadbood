@@ -1,23 +1,23 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+// _mock
+import { _abilityList } from '@/_mock/arrays/_yaadbood';
+// types
 import { IContentModel } from '@/@types/event_maker';
+// services
 import { callApiContentModel } from '@/services/apis/builder';
 import { Box, Checkbox, Stack, Typography, Radio } from '@mui/material';
-import { _abilityList } from '@/_mock/arrays/_yaadbood';
 
-const EventStepFour = ({
-  delta,
-  control,
-  watch,
-  getValues,
-  setValue,
-}: {
+// --------------------------------------------------------
+interface EventStepFourProps {
   delta: number;
-  control: any;
-  watch: any;
+  control: { [key: string]: any };
+  watch: (name?: string) => any;
   getValues: any;
-  setValue: any;
-}) => {
+  setValue: (name: string, value: any) => void;
+}
+// --------------------------------------------------------
+const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStepFourProps) => {
   const [abilityList, setAbilityList] = useState<IContentModel[]>([]);
 
   useEffect(() => {
