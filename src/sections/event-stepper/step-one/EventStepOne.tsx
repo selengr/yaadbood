@@ -1,32 +1,23 @@
-import { useState } from 'react';
-
 // mui
-import {
-  Alert,
-  Box,
-  Button,
-  Dialog,
-  DialogTitle,
-  Divider,
-  FormControlLabel,
-  MenuItem,
-  Radio,
-  RadioGroup,
-  Rating,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Box, Divider, MenuItem, Stack, Typography } from '@mui/material';
 
 import dayjs from 'dayjs';
 
-import { DatePickerMui } from '@/components/datePicker/DatePickerMui';
+// other
+import { motion } from 'framer-motion';
 
+// mui
+import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali';
-// import { UppyUploader } from '@/components/uploader/Uploader';
 
+// components
+import { DatePickerMui } from '@/components/datePicker/DatePickerMui';
+import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
+import { RHFSelect, RHFTextField } from '@/components/hook-form';
+
+// --------------------------------------------------------
 const OPTIONS_TEST = [{ name: 'FUNERAL', label: 'مجلس ترحیم' }];
 const CEREMONY_DURATION = [
   { id: 1, value: '30دقیقه' },
@@ -36,24 +27,14 @@ const CEREMONY_DURATION = [
   { id: 1, value: '4ساعت' },
 ];
 
-// other
-import { motion } from 'framer-motion';
-
-// components
-import { RHFRadioGroup, RHFSelect, RHFTextField } from '@/components/hook-form';
-import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
-
-// sections
-
-const EventStepOne = ({
-  delta,
-  setValue,
-  errors,
-}: {
+interface EventStepOneProps {
   delta: number;
-  setValue: any;
+  setValue: (name: string, value: any) => void;
   errors: any;
-}) => {
+}
+
+// --------------------------------------------------------
+const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
   return (
     <div className="flex w-full items-end flex-col">
       <motion.div
@@ -160,7 +141,9 @@ const EventStepOne = ({
                 setValue('deadImg', data);
               }}
             />
-             <span style={{fontSize:'12px',color:"#b91c1c"}}>{errors.deadImg ? errors.deadImg.message : ''}</span>
+            <span style={{ fontSize: '12px', color: '#b91c1c' }}>
+              {errors.deadImg ? errors.deadImg.message : ''}
+            </span>
           </Stack>
         </Box>
         <Box
@@ -264,7 +247,9 @@ const EventStepOne = ({
                 placeholder="تاریخ برگزاری:"
               />
             </LocalizationProvider>
-            <span style={{fontSize:'11px',color:"#b91c1c",paddingTop:"5px"}}>{errors.date ? errors.date.message : ''}</span>
+            <span style={{ fontSize: '11px', color: '#b91c1c', paddingTop: '5px' }}>
+              {errors.date ? errors.date.message : ''}
+            </span>
           </Stack>
 
           <Stack
@@ -299,7 +284,9 @@ const EventStepOne = ({
                 }}
               />
             </LocalizationProvider>
-            <span style={{fontSize:'11px',color:"#b91c1c",paddingTop:"5px"}}>{errors.startTime ? errors.startTime.message : ''}</span>
+            <span style={{ fontSize: '11px', color: '#b91c1c', paddingTop: '5px' }}>
+              {errors.startTime ? errors.startTime.message : ''}
+            </span>
           </Stack>
         </Box>
       </motion.div>

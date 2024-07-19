@@ -1,55 +1,45 @@
 'use client';
-
+// .next
+import { useSnackbar } from 'notistack';
 import { useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
 // @mui
+import { LoadingButton } from '@mui/lab';
 import { alpha } from '@mui/material/styles';
-import {
-  Box,
-  Step,
-  Paper,
-  Button,
-  Stepper,
-  StepLabel,
-  Typography,
-  Stack,
-  Alert,
-  IconButton,
-  TextField,
-  Tabs,
-  Tab,
-  Dialog,
-} from '@mui/material';
+import { Box, Step, Paper, Button, Stepper, StepLabel, Typography, Stack } from '@mui/material';
 // utils
-
+// Steppe
 import {
   ColorlibConnector,
   ColorlibStepIcon,
   QontoConnector,
   QontoStepIcon,
 } from './StepperDesign';
-import { SubmitHandler, useForm } from 'react-hook-form';
+
+// routes
+import { PATH_PAGE } from '@/routes/paths';
+// form
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Control, SubmitHandler, useForm } from 'react-hook-form';
 // import { FormDataSchema } from './schema';
+
+// components
 import FormProvider from '@/components/hook-form/FormProvider';
-import { LoadingButton } from '@mui/lab';
+
+// step
 import EventStepOne from './step-one/EventStepOne';
 import EventStepTwo from './step-two/EventStepTwo';
 import EventStepThree from './step-three/EventStepThree';
 import EventStepFour from './step-four/EventStepFour';
 import EventStepFive from './step-five/EventStepFive';
-import { FuneralModel } from '@/@types/event_maker';
-import ConfirmDialog from '@/components/confirm-dialog';
-import SvgColor from '@/components/svg-color';
-import useCopyToClipboard from '@/hooks/useCopyToClipboard';
-import { useSnackbar } from 'notistack';
-import Iconify from '@/components/iconify';
-import { callApiContentModel, callApiCreateRoom } from '@/services/apis/builder';
-import { PATH_PAGE } from '../../routes/paths';
-import { useRouter } from 'next/navigation';
 import EventStepSixModal from './step-six-modal/EventStepSixModal';
+// types
+import { FuneralModel, IGetStepContentProps } from '@/@types/event_maker';
+
+// services
+import { callApiCreateRoom } from '@/services/apis/builder';
 
 // ----------------------------------------------------------------------
-
 
 const STEPS = [
   {
@@ -97,16 +87,7 @@ function getStepContent({
   getValues,
   unregister,
   control,
-}: {
-  step: number;
-  delta: number;
-  setValue: any;
-  errors: any;
-  watch: any;
-  getValues: any;
-  unregister: any;
-  control: any;
-}) {
+}: IGetStepContentProps) {
   switch (step) {
     case 0:
       return <EventStepOne delta={delta} setValue={setValue} errors={errors} />;
@@ -161,7 +142,7 @@ function getStepContent({
 export default function CustomizedSteppers() {
   const { push } = useRouter();
   const [previousStep, setPreviousStep] = useState(0);
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState<0 | 1 | 2 | 3 | 4>(0);
   const [openDialog, setOpenDialog] = useState(false);
   const [loading, setLoading] = useState(false);
   const delta: number = activeStep - previousStep;

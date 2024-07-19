@@ -1,22 +1,10 @@
-
 import { useState } from 'react';
 import { LoadingButton } from '@mui/lab';
 import { enqueueSnackbar } from 'notistack';
 import Iconify from '@/components/iconify/Iconify';
 import SvgColor from '@/components/svg-color/SvgColor';
 import useCopyToClipboard from '@/hooks/useCopyToClipboard';
-import {
-  Box,
-  Button,
-  Checkbox,
-  Dialog,
-  IconButton,
-  Stack,
-  Tab,
-  Tabs,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Box, Dialog, IconButton, Stack, Tab, Tabs, TextField } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -102,10 +90,12 @@ const EventStepSixModal = ({
                   setValue('isPrivate', JSON.parse(newValue));
                   if (newValue) {
                     setValue('privateLink', link);
+                    setLink('https://mresalat.ir/yaadbood/event/private/1');
                   } else {
                     setValue('publicLink', link);
                     setValue('privateLoggedInId', '');
                     setValue('privatePassword', '');
+                    setLink('https://mresalat.ir/yaadbood/event/1');
                   }
                 }}
                 sx={{

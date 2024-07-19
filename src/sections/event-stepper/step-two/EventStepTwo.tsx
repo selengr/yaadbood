@@ -1,29 +1,34 @@
 'use client';
 
-import { IAudioContent } from '@/@types/event_maker';
-import { _mediaList } from '@/_mock/arrays/_yaadbood';
-import AudioPlayer from '@/components/audio-player/AudioPlayer';
-import ConfirmDialog from '@/components/confirm-dialog';
-import { RHFCheckbox, RHFTextField } from '@/components/hook-form';
-import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
-import SvgColor from '@/components/svg-color';
-import useResponsive from '@/hooks/useResponsive';
-import { callApiMediaList } from '@/services/apis/builder';
-import { Box, Button, Dialog, DialogContent, IconButton, Stack, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+// types
+import { IAudioContent } from '@/@types/event_maker';
+// _mock
+import { _mediaList } from '@/_mock/arrays/_yaadbood';
 
-const EventStepTwo = ({
-  delta,
-  setValue,
-  watch,
-  getValues,
-}: {
+// components
+import SvgColor from '@/components/svg-color';
+import ConfirmDialog from '@/components/confirm-dialog';
+import AudioPlayer from '@/components/audio-player/AudioPlayer';
+import { RHFCheckbox, RHFTextField } from '@/components/hook-form';
+import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
+// hooks
+import useResponsive from '@/hooks/useResponsive';
+// services
+import { callApiMediaList } from '@/services/apis/builder';
+import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
+
+// --------------------------------------------------------
+interface EventStepTwoProps {
   delta: number;
-  setValue: any;
-  watch: any;
+  setValue: (name: string, value: any) => void;
+  watch: (name?: string) => any;
   getValues: any;
-}) => {
+}
+// --------------------------------------------------------
+
+const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) => {
   const [mediaList, setMediaList] = useState<IAudioContent[]>([]);
   const [roomGallery, setRoomGallery] = useState<any[]>([1]);
   const [indexGallery, setIndexGallery] = useState<number>();

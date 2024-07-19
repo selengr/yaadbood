@@ -1,3 +1,16 @@
+import { Control } from "react-hook-form";
+
+
+export interface IGetStepContentProps {
+  step: 0 | 1 | 2 | 3 | 4;
+  delta: number;
+  setValue: (name: string, value: any) => void;
+  errors: { [key: string]: string | any };
+  control: Control<any, any>;
+  watch: (name?: string) => any;
+  getValues: () => any;
+  unregister: (name?: string) => void;
+}
 
 
 export interface Date {
