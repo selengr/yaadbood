@@ -94,14 +94,14 @@ const EventStepSixModal = ({
                 onChange={(event, newValue) => {
                   setCurrentTab(newValue);
                   setValue('isPrivate', JSON.parse(newValue));
-                  if (newValue) {
+                  if (JSON.parse(newValue)) {
                     setValue('privateLink', link);
                     setLink('https://mresalat.ir/yaadbood/event/private/1');
                   } else {
+                    setLink('https://mresalat.ir/yaadbood/event/1');
                     setValue('publicLink', link);
                     setValue('privateLoggedInId', '');
                     setValue('privatePassword', '');
-                    setLink('https://mresalat.ir/yaadbood/event/1');
                   }
                 }}
                 sx={{
@@ -183,6 +183,7 @@ const EventStepSixModal = ({
                   backgroundColor: 'rgba(23, 88, 186, 0.05)',
                   borderRadius: 1,
                   border: '1px solid #1758BA',
+                  maxHeight: 60,
                   '&:hover': {
                     // color: '#2CDFC9',
                   },
