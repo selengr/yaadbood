@@ -16,7 +16,7 @@ interface ApiResponse<T = any> {
 }
 
 const api: AxiosInstance = axios.create({
-  baseURL: BASE_URL_API,
+  baseURL: 'http://172.16.11.24:8080/yaadbood',
   timeout: 15000,
 });
 

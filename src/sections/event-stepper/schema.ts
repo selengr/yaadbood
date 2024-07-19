@@ -1,49 +1,68 @@
-
-
 import * as Yup from 'yup';
 
 
-export const FormDataSchema = Yup.object().shape({
-  title: Yup.string().required('Title is required'),
-  
-  roomTypeEnum: Yup.string().oneOf(['FUNERAL']).required('Room type is required'),
-  deadName: Yup.string().nullable(),
-  deadImg: Yup.string().uuid('Invalid UUID').required('Dead image is required'),
-  deadAbout: Yup.string().required('Dead about is required'),
-  ceremonyDuration: Yup.number().positive('Ceremony duration must be a positive number').required('Ceremony duration is required'),
-  // need to change
-  date: Yup.object().shape({
-    year: Yup.number().integer('Year must be an integer').required('Year is required'),
-    month: Yup.number().integer('Month must be an integer').required('Month is required'),
-    day: Yup.number().integer('Day must be an integer').required('Day is required'),
-  }).required('Date is required').nullable(),
-  // 
-  startTime: Yup.string().matches(/^([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$/, 'Invalid time format').required('Start time is required'),
- //Step2 MediaInformationModel
-  mediaList: Yup.array().of(Yup.number().integer('Media ID must be an integer').required('Media ID is required')),
-  dedicatedSound: Yup.string().uuid('Invalid UUID').required('Dedicated sound is required'),
-  privateMediaList: Yup.array().of(
-    Yup.object().shape({
-      mediaTypeEnum: Yup.string().oneOf(['IMAGE', 'VIDEO']).required('Media type is required'),
-      file: Yup.string().uuid('Invalid UUID').required('File is required'),
-    }).nullable(),
-  ),
-  presentersModelList: Yup.array().of(
-    Yup.object().shape({
-      name: Yup.string().required('Presenter name is required'),
-      relationshipType: Yup.string().required('Relationship type is required'),
-      img: Yup.string().uuid('Invalid UUID').required('Presenter image is required'),
-      massage: Yup.string().required('Presenter message is required'),
-    }).nullable(),
-  ),
-  specialGuestModelList: Yup.array().of(
-    Yup.object().shape({
-      name: Yup.string().required('Special guest name is required'),
-      postTypeEnum: Yup.string().required('Post type is required'),
-      img: Yup.string().uuid('Invalid UUID').required('Special guest image is required'),
-      massage: Yup.string().required('Special guest message is required'),
-    }).nullable(),
-  ),
-  abilityList: Yup.array().nullable(),
+const mediaSchema = Yup.object().shape({
+  mediaTypeEnum: Yup.string().oneOf(['VIDEO', 'IMAGE']),
+  media_file: Yup.string(),
 });
+
+const roomGalleryListModelSchema = Yup.object().shape({
+  caption: Yup.string(),
+  roomGalleryListModels: Yup.array().of(mediaSchema),
+});
+
+
+// export const FormDataSchema = Yup.object().shape({
+//   title: Yup.string(), //required('عنوان الزامی است'),
+  
+//   roomTypeEnum: Yup.string(), //required('این فیلد الزامی است'),
+//   deadName: Yup.string(), //required('این فیلد الزامی است'),
+//   deadImg: Yup.string().uuid('فرمت UUID نامعتبر است'), //required('تصویر متوفی الزامی است'),
+//   deadAbout: Yup.string(), //required('درباره متوفی الزامی است'),
+//   ceremonyDuration: Yup.string(), //required('مدت مراسم الزامی است'),
+//   // need to change
+//   date: Yup.object().shape({
+//     year: Yup.string(),
+//     month: Yup.string(),
+//     day: Yup.string(),
+//   }), //required('تاریخ الزامی است'),
+//   // 
+//   startTime: Yup.string(), //required('زمان شروع الزامی است'),
+//  //Step2 MediaInformationModel
+//   mediaList: Yup.array().of(Yup.number()), //required('شناسه رسانه الزامی است')),
+//   roomGalleryModelList: Yup.array().of(roomGalleryListModelSchema),
+//   dedicatedSound: Yup.string(),
+
+//    //Step3
+ 
+//   privateMediaList: Yup.array().of(
+//     Yup.object().shape({
+//       mediaTypeEnum: Yup.string().oneOf(['IMAGE', 'VIDEO']),//requi,//ed('نوع رسانه الزامی است'),
+//       file: Yup.string().uuid('فرمت UUID نامعتبر است'),//.required('فایل الزامی است'),
+//     }).nullable(),
+//   ),
+//   roomSpecialFriendsModelList: Yup.array().of(
+//     Yup.object().shape({
+//       postTypeEnum  : Yup.string(),
+//       name: Yup.string(),//.required('نام مجری الزامی است'),
+//       relationshipType: Yup.string(),//.required('نوع رابطه الزامی است'),
+//       img: Yup.string().uuid('فرمت UUID نامعتبر است'),//.required('تصویر مجری الزامی است'),
+//       massage: Yup.string(),//.required('پیام مجری الزامی است'),
+//       phoneNumber : Yup.string(),
+//       password : Yup.string(),
+
+//     }).nullable(),
+//   ),
+//   specialGuestModelList: Yup.array().of(
+//     Yup.object().shape({
+//       name: Yup.string(),//required('نام مهمان ویژه الزامی است'),
+//       postTypeEnum: Yup.string(),//required('نوع پست الزامی است'),
+//       img: Yup.string().uuid('فرمت UUID نامعتبر است'),//required('تصویر مهمان ویژه الزامی است'),
+//       massage: Yup.string(),//required('پیام مهمان ویژه الزامی است'),
+//     }).nullable(),
+//   ),
+//   abilityList: Yup.array(),
+// });
+
+
 

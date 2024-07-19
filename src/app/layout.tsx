@@ -8,6 +8,8 @@ import type { Metadata } from 'next';
 import { SettingsProvider, ThemeSettings } from '@/components/settings';
 import ThemeProvider from '@/theme';
 import Image from 'next/image';
+import { Toaster } from 'sonner';
+import SnackbarProvider from '@/components/snackbar/SnackbarProvider';
 
 // export const metadata: Metadata = {
 //   title: ' آسان درمان | درخواست خدمات پزشکی و درمانی در منزل',
@@ -26,16 +28,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SettingsProvider>
           <ThemeProvider>
             <ThemeSettings>
-              <div className="flex flex-row">
-                <Image
+              <SnackbarProvider>
+                <div className="flex flex-row">
+                  {/* <Image
                   src="/assets/icons/svg/ic_test_nav.svg"
                   alt="test"
                   width={100}
                   height={100}
-                />
-                <div className="w-[70px] sm:w-[450px] bg-[#D9D9D9]"></div>
-                {children}
-              </div>
+                /> */}
+                  <div className="w-[70px] sm:w-[450px] bg-[#D9D9D9]"></div>
+                  {children}
+                </div>
+              </SnackbarProvider>
             </ThemeSettings>
           </ThemeProvider>
         </SettingsProvider>

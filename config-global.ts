@@ -4,7 +4,7 @@ import { PATH_DASHBOARD } from '@/routes/paths';
 // API
 // ----------------------------------------------------------------------
 
-export const BASE_URL_API = process.env.BASE_URL_API || "";
+export const BASE_URL_API = "172.16.11.24/yaadbood";
 
 export const HOST_API_KEY = process.env.HOST_API_KEY || '';
 

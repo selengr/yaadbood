@@ -1,9 +1,9 @@
 
 
 export interface Date {
-    year: number;
-    month: number;
-    day: number;
+    year: string;
+    month: string;
+    day: string;
   }
   
   export interface Media {
@@ -12,10 +12,13 @@ export interface Date {
   }
   
   export interface Presenter {
+    postTypeEnum: string;
     name: string;
     relationshipType: string;
     img: string; // assuming uuid is a string
     massage: string;
+    phoneNumber : string
+    password : string
   }
   
   export interface SpecialGuest {
@@ -24,6 +27,25 @@ export interface Date {
     img: string; // assuming uuid is a string
     massage: string;
   }
+
+
+
+  enum MediaTypeEnum {
+    VIDEO,
+    IMAGE,
+  }
+  
+  interface MediaModel {
+    mediaTypeEnum: MediaTypeEnum;
+    media_file: string; // assuming uuid is a string
+  }
+  
+  export interface IRoomGalleryListModel {
+    caption: string;
+    roomGalleryListModels: MediaModel[];
+  }
+  
+
   
   export interface FuneralModel {
     title: string;
@@ -31,14 +53,54 @@ export interface Date {
     deadName: string | null;
     deadImg: string; // assuming uuid is a string
     deadAbout: string;
-    ceremonyDuration: number;
+    ceremonyDuration: string;
     date: Date|null;
     startTime: string;
     //Step2 MediaInformationModel
     mediaList: number[]|null;
+    roomGalleryModelList: IRoomGalleryListModel[];
     dedicatedSound: string; // assuming uuid is a string
     privateMediaList: Media[]|null;
-    presentersModelList: Presenter[]|null;
+    roomSpecialFriendsModelList: Presenter[]|null;
     specialGuestModelList: SpecialGuest[]|null;
-    abilityList: null | any[]; // assuming abilityList can be null or an array of any type
+    abilityList: null |  
+      {
+        id: null|number,
+        roomAbilityDetailModels: [],
+      }[],
+      isPrivate : boolean,
+      publicLink : "",
+      privateLoggedInId : "" ,
+      privateLink : "" ,
+      privatePassword : ""
+    }
+  // --------------------------------------step two 
+  export interface IAudioContent {
+    id: number;
+    name: string;
+    audio: string; // assuming uuid is a string
   }
+
+
+
+
+
+  // --------------------------------------step four 
+
+  export interface AbilityDetailModel {
+    id: number;
+    media: string;
+    pdf: string;
+    name: string;
+  }
+  
+  export interface IContentModel {
+    id: number;
+    name: string;
+    price: string;
+    description: string;
+    isUploaded: boolean | string;
+    isMultipleChoose: boolean | string;
+    abilityDetailModelList: AbilityDetailModel[];
+  }
+  

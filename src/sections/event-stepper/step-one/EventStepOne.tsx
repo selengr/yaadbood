@@ -25,6 +25,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali';
+// import { UppyUploader } from '@/components/uploader/Uploader';
 
 const OPTIONS_TEST = [{ name: 'FUNERAL', label: 'مجلس ترحیم' }];
 const CEREMONY_DURATION = [
@@ -40,10 +41,19 @@ import { motion } from 'framer-motion';
 
 // components
 import { RHFRadioGroup, RHFSelect, RHFTextField } from '@/components/hook-form';
+import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
 
 // sections
 
-const EventStepOne = ({ delta, setValue }: { delta: number; setValue: any }) => {
+const EventStepOne = ({
+  delta,
+  setValue,
+  errors,
+}: {
+  delta: number;
+  setValue: any;
+  errors: any;
+}) => {
   return (
     <div className="flex w-full items-end flex-col">
       <motion.div
@@ -132,6 +142,25 @@ const EventStepOne = ({ delta, setValue }: { delta: number; setValue: any }) => 
                 },
               }}
             />
+          </Stack>
+          <Stack
+            direction="column"
+            sx={{
+              display: 'flex',
+              justifyContent: 'start',
+            }}
+          >
+            <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 0 }}>
+              تصویر متوفی:
+            </Typography>
+
+            <UppyUploader
+              sx={{}}
+              getData={(data: any) => {
+                setValue('deadImg', data);
+              }}
+            />
+             <span style={{fontSize:'12px',color:"#b91c1c"}}>{errors.deadImg ? errors.deadImg.message : ''}</span>
           </Stack>
         </Box>
         <Box
@@ -222,16 +251,20 @@ const EventStepOne = ({ delta, setValue }: { delta: number; setValue: any }) => 
             <LocalizationProvider dateAdapter={AdapterDateFnsJalali}>
               <DatePickerMui
                 onChange={(date: any) => {
-                  let val = new Date(date).toISOString().split('T')[0].toString();
-
-                  setValue('date', val);
+                  // let val = new Date(date).toISOString().split('T')[0].toString();
+                  const result = {
+                    date: {
+                      year: date.getFullYear() - 621, // subtract 621 to get the Persian year (e.g., 1402)
+                      month: date.getMonth() + 1, // getMonth() returns 0-based month, so add 1
+                      day: date.getDate(),
+                    },
+                  };
+                  setValue('date', result);
                 }}
-                // onChange={(date: any) => {
-                //   setValue('date', new Date(date).toISOString().split('T')[0].toString())
-                // }}
                 placeholder="تاریخ برگزاری:"
               />
             </LocalizationProvider>
+            <span style={{fontSize:'11px',color:"#b91c1c",paddingTop:"5px"}}>{errors.date ? errors.date.message : ''}</span>
           </Stack>
 
           <Stack
@@ -254,14 +287,19 @@ const EventStepOne = ({ delta, setValue }: { delta: number; setValue: any }) => 
             /> */}
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <MobileTimePicker
-                defaultValue={dayjs('2022-04-17T15:30')}
+                defaultValue={dayjs()}
                 localeText={{
                   okButtonLabel: 'ثبت',
                   cancelButtonLabel: 'انصراف',
                   toolbarTitle: 'ساعت',
                 }}
+                onChange={(time: any) => {
+                  const formattedTime = dayjs(time).format('HH:mm');
+                  setValue('startTime', formattedTime);
+                }}
               />
             </LocalizationProvider>
+            <span style={{fontSize:'11px',color:"#b91c1c",paddingTop:"5px"}}>{errors.startTime ? errors.startTime.message : ''}</span>
           </Stack>
         </Box>
       </motion.div>

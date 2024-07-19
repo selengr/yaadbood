@@ -6,12 +6,14 @@ import { FaPlay } from 'react-icons/fa';
 import { FaPause } from 'react-icons/fa';
 import SvgColor from '../svg-color/SvgColor';
 import { Box, IconButton, Stack, Typography } from '@mui/material';
+import { IAudioContent } from '@/@types/event_maker';
 
 interface AudioPlayerProps {
   // Add props type annotations here if needed
+  media: IAudioContent
 }
 
-const AudioPlayer: React.FC<AudioPlayerProps> = () => {
+const AudioPlayer: React.FC<AudioPlayerProps> = ({media}) => {
   // state
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [duration, setDuration] = useState<number>(0);
@@ -115,7 +117,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = () => {
       >
         <audio
           ref={audioPlayer}
-          src="https://cdn.simplecast.com/audio/cae8b0eb-d9a9-480d-a652-0defcbe047f4/episodes/af52a99b-88c0-4638-b120-d46e142d06d3/audio/500344fb-2e2b-48af-be86-af6ac341a6da/default_tc.mp3"
+          src={'http://172.16.11.24:8080/yaadbood'+media.audio}
           preload="metadata"
         ></audio>
 

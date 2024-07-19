@@ -16,7 +16,20 @@ export default function ConfirmDialog({
   ...other
 }: ConfirmDialogProps) {
   return (
-    <Dialog fullWidth dir="rtl" maxWidth="xs" open={open} onClose={onClose} {...other}>
+    <Dialog
+      fullWidth
+      dir="rtl"
+      maxWidth="xs"
+      sx={{
+        '& .MuiDialog-container': {
+          backdropFilter: 'blur(4px)',
+          backgroundColor: 'hsl(0deg 0% 100% / 50%)',
+        },
+      }}
+      open={open}
+      onClose={onClose}
+      {...other}
+    >
       <DialogTitle sx={{ pb: 2 }}>{title}</DialogTitle>
 
       {content && <DialogContent sx={{ typography: 'body2' }}> {content} </DialogContent>}

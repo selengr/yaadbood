@@ -16,6 +16,11 @@ export const PATH_AUTH = {
 
 export const PATH_PAGE = {
   root : '/home',
+
+  event : {
+    root : '/event',
+    crate : '/event/create'
+  },
   assessments: {
     root: '/assessments',
   },

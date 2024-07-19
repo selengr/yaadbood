@@ -15,7 +15,7 @@ import {
 
 type Props = RadioGroupProps & {
   name: string;
-  options: { label: string; value: any }[];
+  options: { id :number; name: any }[];
   label?: string;
   spacing?: number;
   helperText?: React.ReactNode;
@@ -49,10 +49,10 @@ export default function RHFRadioGroup({
           <RadioGroup {...field} aria-labelledby={labelledby} row={row} {...other}>
             {options.map((option) => (
               <FormControlLabel
-                key={option.value}
-                value={option.value}
+                key={option.id}
+                value={option.id}
                 control={<Radio />}
-                label={option.label}
+                label={option.name}
                 sx={{
                   '&:not(:last-of-type)': {
                     mb: spacing || 0,

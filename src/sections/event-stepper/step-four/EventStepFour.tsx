@@ -1,8 +1,37 @@
-import { RHFCheckbox } from '@/components/hook-form';
-import { Box, Paper, Stack, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { IContentModel } from '@/@types/event_maker';
+import { callApiContentModel } from '@/services/apis/builder';
+import { Box, Checkbox, Stack, Typography, Radio } from '@mui/material';
 
-const EventStepFour = ({ delta }: { delta: number }) => {
+const EventStepFour = ({
+  delta,
+  control,
+  watch,
+  getValues,
+  setValue,
+}: {
+  delta: number;
+  control: any;
+  watch: any;
+  getValues: any;
+  setValue: any;
+}) => {
+  const [abilityList, setAbilityList] = useState<IContentModel[]>([]);
+
+  useEffect(() => {
+    async function getMediaList() {
+      try {
+        let res = await callApiContentModel();
+        setAbilityList(res.data.content);
+        if(window) localStorage.setItem('feature-recovery',JSON.stringify(res.data.content))
+      } catch (error) {}
+    }
+    getMediaList();
+  }, []);
+
+  console.log('watch() reza:>> ', watch());
+
   return (
     <div>
       <motion.div
@@ -10,206 +39,163 @@ const EventStepFour = ({ delta }: { delta: number }) => {
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
-        <Box
-          sx={{
-            p: 2,
-            my: 3,
-            borderRadius: 2,
-            display: 'flex',
-            justifyContent: 'start',
-            alignItems: 'start',
-            flexDirection: 'column',
-            bgcolor: (theme) => theme.palette.primary.lighter,
-          }}
-        >
-          <>
-            <Stack
-              direction="column"
+        {abilityList.map((item, index) => {
+          return (
+            <Box
               sx={{
+                p: 2,
+                my: 3,
+                borderRadius: 2,
                 display: 'flex',
                 justifyContent: 'start',
+                alignItems: 'start',
+                flexDirection: 'column',
+                bgcolor: (theme) => theme.palette.primary.lighter,
+                border: getValues(`abilityList.${index}.id`) === item.id ? '1px solid #1758BA' : '',
               }}
             >
-              <RHFCheckbox name="checkbox" label="پوشش زنده" />
-            </Stack>
-          </>
-          <Typography variant="caption" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
-            پوشش زندتوضیح پوشش زنده، توضیح پوشش زنده، توضیح پوشش زنده، توضیح پوشش زنده، توضیح پوشش
-            زنده، توضیح پوشش زنده،
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            p: 2,
-            my: 3,
-            borderRadius: 2,
-            display: 'flex',
-            justifyContent: 'start',
-            alignItems: 'start',
-            flexDirection: 'column',
-            bgcolor: (theme) => theme.palette.primary.lighter,
-          }}
-        >
-          <>
-            <Stack
-              direction="column"
-              sx={{
-                display: 'flex',
-                justifyContent: 'start',
-              }}
-            >
-              <RHFCheckbox name="checkbox" label="دریافت گزارش" />
-            </Stack>
-          </>
-          <Typography variant="caption" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
-            توضیح دریافت گزارش، توضیح دریافت گزارش، توضیح دریافت گزارش، توضیح دریافت گزارش، توضیح
-            دریافت گزارش، توضیح
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            p: 2,
-            my: 3,
-            borderRadius: 2,
-            display: 'flex',
-            justifyContent: 'start',
-            alignItems: 'start',
-            flexDirection: 'column',
-            bgcolor: (theme) => theme.palette.primary.lighter,
-          }}
-        >
-          <>
-            <Stack
-              direction="column"
-              sx={{
-                display: 'flex',
-                justifyContent: 'start',
-              }}
-            >
-              <RHFCheckbox name="checkbox" label="گفت و گو" />
-            </Stack>
-          </>
-          <Typography variant="caption" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
-            توضیح گفت و گو و چت، توضیح گفت و گو و چت، توضیح گفت و گو و چت، توضیح گفت و گو و چت،
-            توضیح گفت و گو و چت،
-          </Typography>
+              <>
+                <Stack
+                  direction="row"
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'start',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Checkbox
+                    value={item.name}
+                    checked={getValues(`abilityList.[${index}].id`) === item.id}
+                    onChange={(event: any) => {
+                      if (event.target.checked) {
+                        setValue(`abilityList.[${index}].id`, item.id);
+                      } else {
+                        const abilityList = getValues('abilityList');
+                        const newAbilityList = abilityList.filter(
+                          (item: any, idx: any) => idx !== index
+                        );
+                        setValue('abilityList', newAbilityList);
+                      }
+                    }}
+                  />
+                  <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800] }}>
+                    {item.name}
+                  </Typography>
+                </Stack>
+              </>
+              <Typography
+                variant="caption"
+                sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}
+              >
+                {item.description}
+              </Typography>
 
-          <Box
-            rowGap={3}
-            columnGap={2}
-            display="grid"
-            gridTemplateColumns={{
-              xs: 'repeat(1, 1fr)',
-              sm: 'repeat(2, 1fr)',
-              md: 'repeat(3, 1fr)',
-              lg: 'repeat(4, 1fr)',
-            }}
-          >
-            <RHFCheckbox
-              name="checkbox"
-              sx={{ color: (theme) => theme.palette.grey[500] }}
-              label="فیلتر کلمات نامناسب"
-            />
-            <RHFCheckbox
-              name="checkbox"
-              sx={{ color: (theme) => theme.palette.grey[500] }}
-              label="نظارت بر پیام‌های ارسالی"
-            />
-            <RHFCheckbox
-              name="checkbox"
-              sx={{ color: (theme) => theme.palette.grey[500] }}
-              label="ارسال مدیا"
-            />
-            <RHFCheckbox
-              name="checkbox"
-              sx={{ color: (theme) => theme.palette.grey[500] }}
-              label="ارسال پیام صوتی"
-            />
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            p: 2,
-            my: 3,
-            borderRadius: 2,
-            display: 'flex',
-            justifyContent: 'start',
-            alignItems: 'start',
-            flexDirection: 'column',
-            bgcolor: (theme) => theme.palette.primary.lighter,
-          }}
-        >
-          <>
-            <Stack
-              direction="column"
-              sx={{
-                display: 'flex',
-                justifyContent: 'start',
-              }}
-            >
-              <RHFCheckbox name="checkbox" label="صوت پس زمینه" />
-            </Stack>
-          </>
-          <Typography variant="caption" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
-            توضیح صوت پس زمینه، توضیح صوت پس زمینه، توضیح صوت پس زمینه
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            p: 2,
-            my: 3,
-            borderRadius: 2,
-            display: 'flex',
-            justifyContent: 'start',
-            alignItems: 'start',
-            flexDirection: 'column',
-            bgcolor: (theme) => theme.palette.primary.lighter,
-          }}
-        >
-          <>
-            <Stack
-              direction="column"
-              sx={{
-                display: 'flex',
-                justifyContent: 'start',
-              }}
-            >
-              <RHFCheckbox name="checkbox" label="ادعیه و ختم قرآن" />
-            </Stack>
-          </>
-          <Typography variant="caption" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
-            توضیح گفت و گو و چت، توضیح گفت و گو و چت، توضیح گفت و گو و چت، توضیح گفت و گو و چت،
-            توضیح گفت و گو و چت،
-          </Typography>
+              {getValues(`abilityList.[${index}].id`) === item.id && (
+                <Box
+                  rowGap={3}
+                  columnGap={2}
+                  display="grid"
+                  gridTemplateColumns={{
+                    xs: 'repeat(1, 1fr)',
+                    sm: 'repeat(4, 1fr)',
+                  }}
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'row !important',
+                    width: '100%',
+                  }}
+                >
+                  {item.isMultipleChoose && (
+                    <>
+                      {item.abilityDetailModelList.map((itm, idx) => {
+                        return (
+                          <Stack
+                            direction="row"
+                            sx={{
+                              display: 'flex',
+                              justifyContent: 'start',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <Checkbox
+                              // value={itm.name}
 
-          <Box
-            rowGap={3}
-            columnGap={2}
-            display="grid"
-            gridTemplateColumns={{
-              xs: 'repeat(1, 1fr)',
-              sm: 'repeat(2, 1fr)',
-              md: 'repeat(3, 1fr)',
-              lg: 'repeat(4, 1fr)',
-            }}
-          >
-            <RHFCheckbox
-              name="checkbox"
-              sx={{ color: (theme) => theme.palette.grey[500] }}
-              label="ابوحمزه ثمالی"
-            />
-            <RHFCheckbox
-              name="checkbox"
-              sx={{ color: (theme) => theme.palette.grey[500] }}
-              label="دعای ۲"
-            />
-            <RHFCheckbox
-              name="checkbox"
-              sx={{ color: (theme) => theme.palette.grey[500] }}
-              label="دعای ۳"
-            />
-          </Box>
-        </Box>
+                              checked={
+                                getValues(
+                                  `abilityList.${index}.roomAbilityDetailModels.[${idx}]`
+                                ) === itm.id
+                              }
+                              onChange={(event: any) => {
+                                if (event.target.checked) {
+                                  // set the id field to the item's id when checked
+                                  setValue(
+                                    `abilityList.${index}.roomAbilityDetailModels.[${idx}]`,
+                                    itm.id
+                                  );
+                                } else {
+                                  // remove the id field when unchecked
+                                  const roomAbilityDetailModels = getValues(
+                                    `abilityList.${index}.roomAbilityDetailModels`
+                                  );
+                                  const newRoomAbilityDetailModels = roomAbilityDetailModels.filter(
+                                    (id: number, idx: number) => idx !== idx
+                                  );
+                                  setValue(
+                                    `abilityList.${index}.roomAbilityDetailModels`,
+                                    newRoomAbilityDetailModels
+                                  );
+                                }
+                              }}
+                            />
+                            <Typography
+                              variant="caption"
+                              sx={{ color: (theme) => theme.palette.grey[800] }}
+                            >
+                              {item.name}
+                            </Typography>
+                          </Stack>
+                        );
+                      })}
+                    </>
+                  )}
+
+                  {!item.isMultipleChoose && (
+                    <>
+                      {item.abilityDetailModelList.map((itm, idx) => {
+                        return (
+                          <Stack
+                            direction="row"
+                            sx={{
+                              display: 'flex',
+                              justifyContent: 'start',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <Radio
+                              // value={itm.name}
+                              checked={
+                                getValues(`abilityList.${index}.roomAbilityDetailModels`) === itm.id
+                              }
+                              onChange={(event: any) => {
+                                setValue(`abilityList.${index}.roomAbilityDetailModels`, itm.id);
+                              }}
+                            />
+                            <Typography
+                              variant="caption"
+                              sx={{ color: (theme) => theme.palette.grey[800] }}
+                            >
+                              {item.name}
+                            </Typography>
+                          </Stack>
+                        );
+                      })}
+                    </>
+                  )}
+                </Box>
+              )}
+            </Box>
+          );
+        })}
       </motion.div>
     </div>
   );
