@@ -30,6 +30,15 @@
     empty: boolean;
   }
 
+
+  export interface IApiResponseCombo<T> {
+    dataList: T;
+    totalCount: number;
+    page: number;
+    rows: number;
+  }
+
+
   // ------------------------------------------------------ usage
 
     export interface IApiResponseSuccess {

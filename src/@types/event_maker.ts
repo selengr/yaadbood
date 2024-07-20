@@ -63,30 +63,43 @@ export interface Date {
   export interface FuneralModel {
     title: string;
     roomTypeEnum: 'FUNERAL'|string;
-    deadName: string | null;
-    deadImg: string; // assuming uuid is a string
+    deadName: string;
+    deadImg?: string | null; // assuming uuid is a string
     deadAbout: string;
     ceremonyDuration: string;
-    date: Date|null;
+    date: {
+      year : string;
+      month: string;
+      day: string
+    } | null;
     startTime: string;
     //Step2 MediaInformationModel
-    mediaList: number[]|null;
-    roomGalleryModelList: IRoomGalleryListModel[];
-    dedicatedSound: string; // assuming uuid is a string
-    privateMediaList: Media[]|null;
-    roomSpecialFriendsModelList: Presenter[]|null;
-    specialGuestModelList: SpecialGuest[]|null;
-    abilityList: null |  
+    mediaList?: number[]|null;
+    roomGalleryModelList?: IRoomGalleryListModel[];
+    dedicatedSound?: string; // assuming uuid is a string
+    privateMediaList?: Media[]|null;
+    roomSpecialFriendsModelList?: Presenter[]|null;
+    specialGuestModelList?: SpecialGuest[]|null;
+    abilityList?: null |  
       {
         id: null|number,
         roomAbilityDetailModels: [],
       }[],
-      isPrivate : boolean,
-      publicLink : "",
-      privateLoggedInId : "" ,
-      privateLink : "" ,
-      privatePassword : ""
-    }
+      isPrivate? : boolean,
+      publicLink? : "",
+      privateLoggedInId? : "" ,
+      privateLink? : "" ,
+      privatePassword? : ""
+    }  
+  // --------------------------------------
+  export interface IRoomTypeEnum {
+    value: string;
+    caption: string;
+    elementStr: string;
+    extMap: {};
+  }
+  
+ 
   // --------------------------------------step two 
   export interface IAudioContent {
     id: number;

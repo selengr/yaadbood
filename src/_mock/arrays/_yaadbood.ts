@@ -1,5 +1,31 @@
 
 
+export let _dataList = {
+    "dataList": [
+        {
+            "value": "etcItem.yaadbood.RoomTypeEnum.roomType.FUNERAL",
+            "caption": "FUNERAL",
+            "elementStr": "",
+            "extMap": {}
+        },
+        {
+            "value": "etcItem.yaadbood.RoomTypeEnum.roomType.COMMEMORATION",
+            "caption": "COMMEMORATION",
+            "elementStr": "",
+            "extMap": {}
+        },
+        {
+            "value": "etcItem.yaadbood.RoomTypeEnum.roomType.MEMORIAL",
+            "caption": "MEMORIAL",
+            "elementStr": "",
+            "extMap": {}
+        }
+    ],
+    "totalCount": 0,
+    "page": 0,
+    "rows": 1000
+}
+
 
 export let _mediaList = {
     "content": [

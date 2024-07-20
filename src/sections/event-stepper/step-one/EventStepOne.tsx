@@ -16,15 +16,19 @@ import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali';
 import { DatePickerMui } from '@/components/datePicker/DatePickerMui';
 import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
 import { RHFSelect, RHFTextField } from '@/components/hook-form';
+import { useEffect, useState } from 'react';
+import { _dataList } from '@/_mock/arrays/_yaadbood';
+import { callApiRoomType } from '@/services/apis/builder';
+import { IRoomTypeEnum } from '@/@types/event_maker';
 
 // --------------------------------------------------------
 const OPTIONS_TEST = [{ name: 'FUNERAL', label: 'مجلس ترحیم' }];
 const CEREMONY_DURATION = [
-  { id: 1, value: '30دقیقه' },
+  // { id: 1, value: '30دقیقه' },
   { id: 1, value: 'ساعت1' },
-  { id: 1, value: 'ساعت2' },
-  { id: 1, value: '3ساعت' },
-  { id: 1, value: '4ساعت' },
+  { id: 2, value: 'ساعت2' },
+  { id: 3, value: '3ساعت' },
+  { id: 4, value: '4ساعت' },
 ];
 
 interface EventStepOneProps {
@@ -35,6 +39,24 @@ interface EventStepOneProps {
 
 // --------------------------------------------------------
 const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
+  const [dataListCombo, setDataListCombo] = useState<IRoomTypeEnum[]>([]);
+
+  useEffect(() => {
+    async function getMediaList() {
+      //--------test
+      setDataListCombo(_dataList.dataList);
+      //--------test
+      try {
+        let res = await callApiRoomType();
+        setDataListCombo(res.data.dataList);
+      } catch (error) {
+        setDataListCombo(_dataList.dataList);
+      }
+    }
+    getMediaList();
+  }, []);
+
+  // _dataList
   return (
     <div className="flex w-full items-end flex-col">
       <motion.div
@@ -90,15 +112,15 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
                 یک گزینه انتخاب کنید
               </MenuItem>
               <Divider sx={{ borderStyle: 'dashed' }} />
-              {OPTIONS_TEST.map((option) => (
+              {dataListCombo.map((option: IRoomTypeEnum) => (
                 <MenuItem
                   sx={{
                     direction: 'ltr !important',
                   }}
-                  key={option.name}
-                  value={option.name}
+                  key={option.caption}
+                  value={option.caption}
                 >
-                  {option.label}
+                  {option.caption}
                 </MenuItem>
               ))}
             </RHFSelect>
@@ -112,7 +134,7 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
             }}
           >
             <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
-              نام متوفی:
+              نام متوفی/بزرگداشت/یادبود:
             </Typography>
             <RHFTextField
               name="deadName"
@@ -132,7 +154,7 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
             }}
           >
             <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 0 }}>
-              تصویر متوفی:
+              تصویر متوفی/بزرگداشت/یادبود:
             </Typography>
 
             <UppyUploader
@@ -141,7 +163,7 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
                 setValue('deadImg', data);
               }}
             />
-            <span style={{ fontSize: '12px', color: '#b91c1c' }}>
+            <span style={{ fontSize: '12px', color: '#D21425' }}>
               {errors.deadImg ? errors.deadImg.message : ''}
             </span>
           </Stack>
@@ -163,7 +185,7 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
             }}
           >
             <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800], pb: 1 }}>
-              درباره متوفی:
+              توضیحات:
             </Typography>
             <RHFTextField
               name="deadAbout"
@@ -204,8 +226,8 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
                   sx={{
                     direction: 'ltr !important',
                   }}
-                  key={option.value}
-                  value={option.value}
+                  key={option.id}
+                  value={option.id}
                 >
                   {option.value}
                 </MenuItem>
@@ -233,6 +255,7 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
 
             <LocalizationProvider dateAdapter={AdapterDateFnsJalali}>
               <DatePickerMui
+                disablePast={true}
                 onChange={(date: any) => {
                   // let val = new Date(date).toISOString().split('T')[0].toString();
                   const result = {
@@ -245,7 +268,7 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
                 placeholder="تاریخ برگزاری:"
               />
             </LocalizationProvider>
-            <span style={{ fontSize: '11px', color: '#b91c1c', paddingTop: '5px' }}>
+            <span style={{ fontSize: '12px', color: '#D21425', paddingTop: '5px' }}>
               {errors.date ? errors.date.message : ''}
             </span>
           </Stack>
@@ -282,7 +305,7 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
                 }}
               />
             </LocalizationProvider>
-            <span style={{ fontSize: '11px', color: '#b91c1c', paddingTop: '5px' }}>
+            <span style={{ fontSize: '12px', color: '#D21425', paddingTop: '5px' }}>
               {errors.startTime ? errors.startTime.message : ''}
             </span>
           </Stack>

@@ -11,9 +11,7 @@ import { Box, Step, Paper, Button, Stepper, StepLabel, Typography, Stack } from 
 // Steppe
 import {
   ColorlibConnector,
-  ColorlibStepIcon,
-  QontoConnector,
-  QontoStepIcon,
+  ColorlibStepIcon
 } from './StepperDesign';
 
 // routes
@@ -21,7 +19,7 @@ import { PATH_PAGE } from '@/routes/paths';
 // form
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Control, SubmitHandler, useForm } from 'react-hook-form';
-// import { FormDataSchema } from './schema';
+import { FormDataSchema } from './schema';
 
 // components
 import FormProvider from '@/components/hook-form/FormProvider';
@@ -49,7 +47,6 @@ const STEPS = [
       'title',
       'roomTypeEnum',
       'deadName',
-      'deadImg',
       'deadAbout',
       'ceremonyDuration',
       'date',
@@ -132,7 +129,7 @@ function getStepContent({
 export default function CustomizedSteppers() {
   const { push } = useRouter();
   const [previousStep, setPreviousStep] = useState(0);
-  const [activeStep, setActiveStep] = useState<number>(3);
+  const [activeStep, setActiveStep] = useState<number>(0);
   const [openDialog, setOpenDialog] = useState(false);
   const [loading, setLoading] = useState(false);
   const delta: number = activeStep - previousStep;
@@ -145,14 +142,10 @@ export default function CustomizedSteppers() {
       title: '',
       roomTypeEnum: '',
       deadName: '',
-      deadImg: '',
+      deadImg: null,
       deadAbout: '',
       ceremonyDuration: '',
-      date: {
-        year: '',
-        month: '',
-        day: '',
-      },
+      date: null,
       startTime: '',
 
       roomGalleryModelList: [
@@ -192,7 +185,7 @@ export default function CustomizedSteppers() {
   );
 
   const methods = useForm<FormValuesProps | any>({
-    // resolver: yupResolver(FormDataSchema),
+    resolver: yupResolver(FormDataSchema),
     defaultValues,
   });
 
