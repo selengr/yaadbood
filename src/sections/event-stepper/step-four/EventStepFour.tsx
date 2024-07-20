@@ -108,8 +108,8 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
               </Typography>
 
               {getValues(`abilityList`).some(
-                      (abilityItem: { id: number }) => abilityItem.id === item.id
-                    ) && (
+                (abilityItem: { id: number }) => abilityItem.id === item.id
+              ) && (
                 <Box
                   rowGap={3}
                   columnGap={2}
