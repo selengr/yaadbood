@@ -382,7 +382,7 @@ export default function CustomizedSteppers() {
                   backgroundColor: (theme) => theme.palette.primary.main,
                 },
                 paddingY: 1.5,
-                paddingX: { xs: 3, sm: 6 },
+                paddingX: { xs: 3, sm: 3, md: 6 },
                 fontWeight: 400,
                 // fontSize :10
               }}

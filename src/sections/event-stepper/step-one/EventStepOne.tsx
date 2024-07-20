@@ -236,11 +236,9 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
                 onChange={(date: any) => {
                   // let val = new Date(date).toISOString().split('T')[0].toString();
                   const result = {
-                    date: {
-                      year: date.getFullYear() - 621, // subtract 621 to get the Persian year (e.g., 1402)
-                      month: date.getMonth() + 1, // getMonth() returns 0-based month, so add 1
-                      day: date.getDate(),
-                    },
+                    year: date.getFullYear() - 621, // subtract 621 to get the Persian year (e.g., 1402)
+                    month: date.getMonth() + 1, // getMonth() returns 0-based month, so add 1
+                    day: date.getDate(),
                   };
                   setValue('date', result);
                 }}

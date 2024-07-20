@@ -17,7 +17,7 @@ import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
 import useResponsive from '@/hooks/useResponsive';
 // services
 import { callApiMediaList } from '@/services/apis/builder';
-import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
+import { Box, Button, Checkbox, IconButton, Stack, Typography } from '@mui/material';
 
 // --------------------------------------------------------
 interface EventStepTwoProps {
@@ -34,10 +34,13 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
   const [indexGallery, setIndexGallery] = useState<number>();
   const [addImage, setAddImage] = useState();
   const [openDialog, setOpenDialog] = useState(false);
-  const isMobile = useResponsive('down', 'sm');
+  const isMobile = useResponsive('down', 'md');
 
   useEffect(() => {
     async function getMediaList() {
+      //--------test
+      setMediaList(_mediaList.content);
+      //--------test
       try {
         let res = await callApiMediaList();
         setMediaList(res.data.content);
@@ -69,7 +72,7 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
             bgcolor: (theme) => theme.palette.primary.lighter,
           }}
         >
-          {mediaList?.map((item, index) => (
+          {mediaList?.map((item: IAudioContent, index) => (
             <Stack
               // direction="row"
               sx={{
@@ -93,7 +96,22 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
                     }}
                   >
                     <div className="flex flex-row items-center justify-center">
-                      <RHFCheckbox name="checkbox" label="" />
+                      <Checkbox
+                        value={item.name}
+                        checked={getValues(`mediaList`).includes(item.id)}
+                        onChange={(event: any) => {
+                          const mediaList = getValues('mediaList');
+                          if (event.target.checked) {
+                            setValue('mediaList', [...mediaList, item.id]);
+                          } else {
+                            setValue(
+                              'mediaList',
+                              mediaList.filter((id: number) => id !== item.id)
+                            );
+                          }
+                        }}
+                      />
+
                       <Typography
                         variant="body1"
                         sx={{ color: (theme) => theme.palette.grey[800] }}
@@ -117,7 +135,21 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
 
                   <AudioPlayer media={item} />
 
-                  <RHFCheckbox name="checkbox" label="" />
+                  <Checkbox
+                    value={item.name}
+                    checked={getValues(`mediaList`).includes(item.id)}
+                    onChange={(event: any) => {
+                      const mediaList = getValues('mediaList');
+                      if (event.target.checked) {
+                        setValue('mediaList', [...mediaList, item.id]);
+                      } else {
+                        setValue(
+                          'mediaList',
+                          mediaList.filter((id: number) => id !== item.id)
+                        );
+                      }
+                    }}
+                  />
                 </>
               )}
             </Stack>
