@@ -132,7 +132,7 @@ function getStepContent({
 export default function CustomizedSteppers() {
   const { push } = useRouter();
   const [previousStep, setPreviousStep] = useState(0);
-  const [activeStep, setActiveStep] = useState<number>(0);
+  const [activeStep, setActiveStep] = useState<number>(3);
   const [openDialog, setOpenDialog] = useState(false);
   const [loading, setLoading] = useState(false);
   const delta: number = activeStep - previousStep;
@@ -148,7 +148,11 @@ export default function CustomizedSteppers() {
       deadImg: '',
       deadAbout: '',
       ceremonyDuration: '',
-      date: null,
+      date: {
+        year: '',
+        month: '',
+        day: '',
+      },
       startTime: '',
 
       roomGalleryModelList: [
@@ -180,7 +184,7 @@ export default function CustomizedSteppers() {
 
       specialGuestModelList: null,
 
-      abilityList: null,
+      abilityList: [],
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     // [currentUserList]

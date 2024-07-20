@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   width={100}
                   height={100}
                 /> */}
-                  <div className="w-[70px] sm:w-[450px] bg-[#D9D9D9]"></div>
+                  {/* <div className="w-[70px] sm:w-[450px] bg-[#D9D9D9]"></div> */}
                   {children}
                 </div>
               </SnackbarProvider>

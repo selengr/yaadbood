@@ -40,10 +40,10 @@ const EventStepThree = ({
 
   const handleDelete = (index: number) => {
     const values = getValues();
-    const newroomSpecialFriendsModelList = values.roomSpecialFriendsModelList.filter(
+    const newRoomSpecialFriendsModelList = values.roomSpecialFriendsModelList.filter(
       (_: any, i: number) => i !== index
     );
-    setValue('roomSpecialFriendsModelList', newroomSpecialFriendsModelList);
+    setValue('roomSpecialFriendsModelList', newRoomSpecialFriendsModelList);
     setPresentersList(PresentersList.filter((_, i) => i !== index));
   };
 

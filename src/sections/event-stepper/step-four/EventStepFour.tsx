@@ -22,6 +22,10 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
 
   useEffect(() => {
     async function getMediaList() {
+      // test
+      setAbilityList(_abilityList.content);
+      if (window) localStorage.setItem('feature-recovery', JSON.stringify(_abilityList.content));
+      // test
       try {
         let res = await callApiContentModel();
         setAbilityList(res.data.content);
@@ -33,6 +37,8 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
     }
     getMediaList();
   }, []);
+
+  console.log('abilityList', watch('abilityList'));
 
   return (
     <div>
@@ -53,7 +59,11 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
                 alignItems: 'start',
                 flexDirection: 'column',
                 bgcolor: (theme) => theme.palette.primary.lighter,
-                border: getValues(`abilityList.${index}.id`) === item.id ? '1px solid #1758BA' : '',
+                border: getValues(`abilityList`).some(
+                  (abilityItem: { id: number }) => abilityItem.id === item.id
+                )
+                  ? '1px solid #1758BA'
+                  : '',
               }}
             >
               <>
@@ -67,19 +77,24 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
                 >
                   <Checkbox
                     value={item.name}
-                    checked={getValues(`abilityList.[${index}].id`) === item.id}
+                    checked={getValues(`abilityList`).some(
+                      (abilityItem: { id: number }) => abilityItem.id === item.id
+                    )}
                     onChange={(event: any) => {
+                      const abilityList = getValues('abilityList');
                       if (event.target.checked) {
-                        setValue(`abilityList.[${index}].id`, item.id);
+                        setValue('abilityList', [...abilityList, { id: item.id }]);
                       } else {
-                        const abilityList = getValues('abilityList');
-                        const newAbilityList = abilityList.filter(
-                          (item: any, idx: any) => idx !== index
+                        setValue(
+                          'abilityList',
+                          abilityList.filter(
+                            (abilityItem: { id: number }) => abilityItem.id !== item.id
+                          )
                         );
-                        setValue('abilityList', newAbilityList);
                       }
                     }}
                   />
+
                   <Typography variant="body2" sx={{ color: (theme) => theme.palette.grey[800] }}>
                     {item.name}
                   </Typography>
@@ -92,7 +107,9 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
                 {item.description}
               </Typography>
 
-              {getValues(`abilityList.[${index}].id`) === item.id && (
+              {getValues(`abilityList`).some(
+                      (abilityItem: { id: number }) => abilityItem.id === item.id
+                    ) && (
                 <Box
                   rowGap={3}
                   columnGap={2}
@@ -173,13 +190,41 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
                               alignItems: 'center',
                             }}
                           >
-                            <Radio
+                            {/* <Radio
                               // value={itm.name}
                               checked={
                                 getValues(`abilityList.${index}.roomAbilityDetailModels`) === itm.id
                               }
                               onChange={(event: any) => {
                                 setValue(`abilityList.${index}.roomAbilityDetailModels`, itm.id);
+                              }}
+                            /> */}
+                            {/* <Radio
+  value={itm.id}
+  checked={
+    getValues(`abilityList.${index}.roomAbilityDetailModels`)?.includes(itm.id)
+  }
+  onChange={(event: any) => {
+    const abilityList = getValues('abilityList');
+    const currentRoomAbilityDetailModels = abilityList[index].roomAbilityDetailModels || [];
+    if (event.target.checked) {
+      abilityList[index].roomAbilityDetailModels = [...currentRoomAbilityDetailModels, itm.id];
+    } else {
+      abilityList[index].roomAbilityDetailModels = currentRoomAbilityDetailModels.filter((id: number) => id !== itm.id);
+    }
+    setValue('abilityList', abilityList);
+  }}
+/> */}
+                            <Radio
+                              value={itm.id}
+                              checked={
+                                getValues(`abilityList.${index}.roomAbilityDetailModels`)?.[0] ===
+                                itm.id
+                              }
+                              onChange={(event: any) => {
+                                const abilityList = getValues('abilityList');
+                                abilityList[index].roomAbilityDetailModels = [itm.id];
+                                setValue('abilityList', abilityList);
                               }}
                             />
                             <Typography
