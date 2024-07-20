@@ -190,31 +190,6 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
                               alignItems: 'center',
                             }}
                           >
-                            {/* <Radio
-                              // value={itm.name}
-                              checked={
-                                getValues(`abilityList.${index}.roomAbilityDetailModels`) === itm.id
-                              }
-                              onChange={(event: any) => {
-                                setValue(`abilityList.${index}.roomAbilityDetailModels`, itm.id);
-                              }}
-                            /> */}
-                            {/* <Radio
-  value={itm.id}
-  checked={
-    getValues(`abilityList.${index}.roomAbilityDetailModels`)?.includes(itm.id)
-  }
-  onChange={(event: any) => {
-    const abilityList = getValues('abilityList');
-    const currentRoomAbilityDetailModels = abilityList[index].roomAbilityDetailModels || [];
-    if (event.target.checked) {
-      abilityList[index].roomAbilityDetailModels = [...currentRoomAbilityDetailModels, itm.id];
-    } else {
-      abilityList[index].roomAbilityDetailModels = currentRoomAbilityDetailModels.filter((id: number) => id !== itm.id);
-    }
-    setValue('abilityList', abilityList);
-  }}
-/> */}
                             <Radio
                               value={itm.id}
                               checked={
