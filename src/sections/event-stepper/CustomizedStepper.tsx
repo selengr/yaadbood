@@ -126,7 +126,7 @@ function getStepContent({
 export default function CustomizedSteppers() {
   const { push } = useRouter();
   const [previousStep, setPreviousStep] = useState(0);
-  const [activeStep, setActiveStep] = useState<number>(1);
+  const [activeStep, setActiveStep] = useState<number>(0);
   const [openDialog, setOpenDialog] = useState(false);
   const [loading, setLoading] = useState(false);
   const delta: number = activeStep - previousStep;

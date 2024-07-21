@@ -44,13 +44,13 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
   useEffect(() => {
     async function getMediaList() {
       //--------test
-      setDataListCombo(_dataList.dataList);
+      // setDataListCombo(_dataList.dataList);
       //--------test
       try {
         let res = await callApiRoomType();
         setDataListCombo(res.data.dataList);
       } catch (error) {
-        setDataListCombo(_dataList.dataList);
+        // setDataListCombo(_dataList.dataList);
       }
     }
     getMediaList();

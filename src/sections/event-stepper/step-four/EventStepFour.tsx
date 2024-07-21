@@ -23,16 +23,16 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
   useEffect(() => {
     async function getMediaList() {
       // test
-      setAbilityList(_abilityList.content);
-      if (window) localStorage.setItem('feature-recovery', JSON.stringify(_abilityList.content));
+      // setAbilityList(_abilityList.content);
+      // if (window) localStorage.setItem('feature-recovery', JSON.stringify(_abilityList.content));
       // test
       try {
         let res = await callApiContentModel();
         setAbilityList(res.data.content);
         if (window) localStorage.setItem('feature-recovery', JSON.stringify(res.data.content));
       } catch (error) {
-        setAbilityList(_abilityList.content);
-        if (window) localStorage.setItem('feature-recovery', JSON.stringify(_abilityList.content));
+        // setAbilityList(_abilityList.content);
+        // if (window) localStorage.setItem('feature-recovery', JSON.stringify(_abilityList.content));
       }
     }
     getMediaList();
