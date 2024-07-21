@@ -44,12 +44,12 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
         let res = await callApiMediaList();
         setMediaList(res.data.content);
       } catch (error) {
-        // setMediaList(_mediaList.content);
+        setMediaList(_mediaList.content);
       }
     }
     getMediaList();
   }, []);
-
+  
   return (
     <div>
       <motion.div

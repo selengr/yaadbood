@@ -32,17 +32,20 @@ export let _mediaList = {
         {
             "id": 22,
             "name": "صوت اول",
-            "audio": "uuid"
+            "audio": "uuid",
+            link : ""
         },
         {
             "id": 21,
             "name": "صوت اول",
-            "audio": "uuid"
+            "audio": "uuid",
+            link : ""
         },
         {
             "id": 1,
             "name": "صوت اول",
-            "audio": "uuid"
+            "audio": "uuid",
+            link : ""
         }
     ],
     "pageable": {

@@ -33,6 +33,11 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ media }) => {
     });
   }, [audioPlayer, audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
+  useEffect(() => {
+    return () => {
+      setIsPlaying(false);
+    };
+  });
   const calculateTime = (secs: number) => {
     const minutes = Math.floor(secs / 60);
     const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
@@ -117,7 +122,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ media }) => {
       >
         <audio
           ref={audioPlayer}
-          src={'http://172.16.11.24:8080/yaadbood' + media.audio}
+          src={'http://172.16.11.24:8080/filemanager/' + media.link}
           preload="metadata"
         ></audio>
 

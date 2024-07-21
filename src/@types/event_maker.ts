@@ -105,6 +105,7 @@ export interface Date {
     id: number;
     name: string;
     audio: string; // assuming uuid is a string
+    link : string
   }
 
 
