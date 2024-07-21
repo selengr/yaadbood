@@ -1,7 +1,8 @@
 'use client';
+import Tus from '@uppy/tus';
 import { useRef } from 'react';
 import Uppy from '@uppy/core';
-import Tus from '@uppy/tus';
+import { toast } from 'sonner';
 // @ts-ignore
 // @ts-nocheck
 import Persian from '@uppy/locales/lib/fa_IR';
@@ -11,7 +12,6 @@ import { type IUploader } from './types';
 import '@uppy/core/dist/style.min.css';
 import '@uppy/dashboard/dist/style.min.css';
 import '@uppy/image-editor/dist/style.min.css';
-import { toast } from 'sonner';
 
 export function UppyUploader({
   fileRestriction = fileUploaderRestrictions,

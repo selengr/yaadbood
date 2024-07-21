@@ -17,4 +17,4 @@ export interface IFileRestriction {
   allowedFileTypes?: Array<TAllowedFileTypes>;
 }
 
-type TAllowedFileTypes = '.xls' | '.xlsx' | '.png' | '.jpeg' | '.jpg' | 'video/*';
+type TAllowedFileTypes = '.xls' | '.xlsx' | '.png' | '.jpeg' | '.jpg' | 'video/*' | 'mp3';

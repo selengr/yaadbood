@@ -9,10 +9,7 @@ import { alpha } from '@mui/material/styles';
 import { Box, Step, Paper, Button, Stepper, StepLabel, Typography, Stack } from '@mui/material';
 // utils
 // Steppe
-import {
-  ColorlibConnector,
-  ColorlibStepIcon
-} from './StepperDesign';
+import { ColorlibConnector, ColorlibStepIcon } from './StepperDesign';
 
 // routes
 import { PATH_PAGE } from '@/routes/paths';
@@ -129,7 +126,7 @@ function getStepContent({
 export default function CustomizedSteppers() {
   const { push } = useRouter();
   const [previousStep, setPreviousStep] = useState(0);
-  const [activeStep, setActiveStep] = useState<number>(0);
+  const [activeStep, setActiveStep] = useState<number>(1);
   const [openDialog, setOpenDialog] = useState(false);
   const [loading, setLoading] = useState(false);
   const delta: number = activeStep - previousStep;

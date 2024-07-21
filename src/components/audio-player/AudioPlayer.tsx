@@ -10,10 +10,10 @@ import { IAudioContent } from '@/@types/event_maker';
 
 interface AudioPlayerProps {
   // Add props type annotations here if needed
-  media: IAudioContent
+  media: IAudioContent;
 }
 
-const AudioPlayer: React.FC<AudioPlayerProps> = ({media}) => {
+const AudioPlayer: React.FC<AudioPlayerProps> = ({ media }) => {
   // state
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [duration, setDuration] = useState<number>(0);
@@ -91,7 +91,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({media}) => {
     <Box
       sx={{
         paddingY: 4,
-        paddingX: 6,
+        paddingX: 2,
         borderRadius: '16px',
         height: '48px',
         backgroundColor: 'white',
@@ -117,7 +117,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({media}) => {
       >
         <audio
           ref={audioPlayer}
-          src={'http://172.16.11.24:8080/yaadbood'+media.audio}
+          src={'http://172.16.11.24:8080/yaadbood' + media.audio}
           preload="metadata"
         ></audio>
 
@@ -129,7 +129,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({media}) => {
             // mr: -2,
           }}
         >
-          <IconButton
+          {/* <IconButton
             size="small"
             onClick={togglePlayPause}
             sx={{
@@ -146,7 +146,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({media}) => {
               onClick={backThirty}
               sx={{ color: '#1758BA' }}
             />
-          </IconButton>
+          </IconButton> */}
 
           <IconButton
             size="small"
@@ -167,7 +167,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({media}) => {
             {isPlaying ? <FaPause className={styles.plause} /> : <FaPlay className={styles.play} />}
           </IconButton>
 
-          <IconButton
+          {/* <IconButton
             size="small"
             onClick={togglePlayPause}
             sx={{
@@ -182,7 +182,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({media}) => {
               onClick={forwardThirty}
               sx={{ color: '#1758BA' }}
             />
-          </IconButton>
+          </IconButton> */}
         </Box>
 
         {/* current time */}

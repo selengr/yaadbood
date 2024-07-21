@@ -12,10 +12,12 @@ export const GalleryItem = ({
   index,
   setValue,
   getValues,
+  roomGallery,
   setRoomGallery,
 }: {
   item: any;
   index: number;
+  roomGallery: any;
   getValues: (key?: string) => any;
   setRoomGallery: (gallery: any) => void;
   setValue: (name: string, value: any) => void;
@@ -28,7 +30,6 @@ export const GalleryItem = ({
   const mediaFile = getValues(`roomGalleryModelList.${index}.roomGalleryListModels.media_file`);
   const activeLine = caption?.length > 0 || mediaFile?.length > 0;
   const activeImage = mediaFile?.length > 0;
-  const activeCaption = mediaFile?.length > 0;
 
   return (
     <Box
@@ -99,6 +100,7 @@ export const GalleryItem = ({
           />
         </IconButton>
 
+        {/* {roomGallery?.[roomGallery?.length - 1] ? true :false && ( */}
         <IconButton
           size="small"
           disabled={!activeLine}
@@ -120,28 +122,26 @@ export const GalleryItem = ({
             sx={{ color: activeLine ? '#1758BA' : '#A8A8A8' }}
           />
         </IconButton>
-
+        {/* // )} */}
         {/* <IconButton
-                    size="small"
-                    onClick={() => handleDelete(index)}
-                    disabled={PresentersList.length <= 1}
-                    sx={{
-                      p: 1.5,
-                      backgroundColor:
-                        PresentersList.length <= 1 ? '#A8A8A8' : 'rgba(250, 77, 86, 0.05)',
-                      borderRadius: 1,
-                      border:
-                        PresentersList.length <= 1 ? '1px solid #A8A8A8' : '1px solid #FA4D56',
-                      '&:hover': {
-                        // color: '#FA4D56',
-                      },
-                    }}
-                  >
-                    <SvgColor
-                      src={`/assets/icons/svg/ic_trash.svg`}
-                      sx={{ color: PresentersList.length <= 1 ? '#A8A8A8' : '#FA4D56' }}
-                    />
-                  </IconButton> */}
+          size="small"
+          // onClick={() => handleDelete(index)}
+          // disabled={PresentersList.length <= 1}
+          sx={{
+            p: 1.5,
+            // backgroundColor: PresentersList.length <= 1 ? '#A8A8A8' : 'rgba(250, 77, 86, 0.05)',
+            borderRadius: 1,
+            // border: PresentersList.length <= 1 ? '1px solid #A8A8A8' : '1px solid #FA4D56',
+            '&:hover': {
+              // color: '#FA4D56',
+            },
+          }}
+        >
+          <SvgColor
+            src={`/assets/icons/svg/ic_trash.svg`}
+            // sx={{ color: PresentersList.length <= 1 ? '#A8A8A8' : '#FA4D56' }}
+          />
+        </IconButton> */}
       </Stack>
 
       <ConfirmDialog
@@ -177,8 +177,6 @@ export const GalleryItem = ({
                     setAddImage(data);
                   }}
                   withoutCamera={true}
-
-                  // fileRestriction={}
                 />
               </Stack>
             </Box>

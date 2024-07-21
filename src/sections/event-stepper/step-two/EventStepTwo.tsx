@@ -170,7 +170,7 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
                 setValue('dedicatedSound', data);
               }}
               withoutCamera={true}
-              // fileRestriction={}
+              fileRestriction={{ allowedFileTypes: ['mp3'] }}
             />
           </Stack>
         </Box>
@@ -196,6 +196,7 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
               index={index}
               getValues={getValues}
               setValue={setValue}
+              roomGallery={roomGallery}
               setRoomGallery={setRoomGallery}
             />
           ))}

@@ -7,5 +7,5 @@ export const fileUploaderRestrictions: IFileRestriction = {
   minNumberOfFiles: 1,
   maxNumberOfFiles: 1,
   maxTotalFileSize: undefined,
-  allowedFileTypes: ['.jpeg', '.jpg', '.png', '.xls', '.xlsx', 'video/*'],
+  allowedFileTypes: ['.jpeg', '.jpg', '.png', '.xls', '.xlsx', 'video/*' , 'mp3'],
 };
