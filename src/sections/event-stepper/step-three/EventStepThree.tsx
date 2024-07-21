@@ -56,13 +56,6 @@ const EventStepThree = ({
       >
         {PresentersList.map((item, index) => {
           let activeAdd = PresentersList.length - 1;
-          let activeLine =
-            getValues(`roomSpecialFriendsModelList.${index}.name`)?.length > 0 ||
-            getValues(`roomSpecialFriendsModelList.${index}.relationshipType`)?.length > 0 ||
-            getValues(`roomSpecialFriendsModelList.${index}.phoneNumber`)?.length > 0 ||
-            getValues(`roomSpecialFriendsModelList.${index}.password`)?.length > 0 ||
-            getValues(`roomSpecialFriendsModelList.${index}.massage`)?.length > 0 ||
-            getValues(`roomSpecialFriendsModelList.${index}.img`)?.length > 0;
           let activeImage = getValues(`roomSpecialFriendsModelList.${index}.img`)?.length > 0;
           return (
             <>

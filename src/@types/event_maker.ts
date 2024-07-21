@@ -33,7 +33,7 @@ export interface Date {
     phoneNumber : string
     password : string
   }
-  
+
   export interface SpecialGuest {
     name: string;
     postTypeEnum: string;
@@ -54,37 +54,40 @@ export interface Date {
   }
   
   export interface IRoomGalleryListModel {
-    caption: string;
-    roomGalleryListModels: MediaModel[];
+    caption?: string;
+    roomGalleryListModels?: MediaModel[];
   }
   
-
+  
   
   export interface FuneralModel {
+     // -------------------------- step one
     title: string;
-    roomTypeEnum: 'FUNERAL'|string;
+    roomTypeEnum: string;
     deadName: string;
     deadImg?: string | null; // assuming uuid is a string
     deadAbout: string;
-    ceremonyDuration: string;
+    ceremonyDuration: number;
     date: {
       year : string;
       month: string;
       day: string
     } | null;
     startTime: string;
-    //Step2 MediaInformationModel
-    mediaList?: number[]|null;
-    roomGalleryModelList?: IRoomGalleryListModel[];
+     // -------------------------- step one
+    mediaList?: [];
     dedicatedSound?: string; // assuming uuid is a string
-    privateMediaList?: Media[]|null;
-    roomSpecialFriendsModelList?: Presenter[]|null;
-    specialGuestModelList?: SpecialGuest[]|null;
-    abilityList?: null |  
-      {
-        id: null|number,
-        roomAbilityDetailModels: [],
+    roomGalleryModelList?: IRoomGalleryListModel[] | [];
+     // -------------------------- step three
+     roomSpecialFriendsModelList?: Presenter[]|[];
+     // -------------------------- step four
+     abilityList?: [] |  
+     {
+       id: number,
+       roomAbilityDetailModels: [],
       }[],
+      // -------------------------- step five
+
       isPrivate? : boolean,
       publicLink? : "",
       privateLoggedInId? : "" ,

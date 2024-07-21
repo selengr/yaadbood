@@ -49,7 +49,7 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
     }
     getMediaList();
   }, []);
-  
+
   return (
     <div>
       <motion.div

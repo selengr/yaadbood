@@ -64,8 +64,8 @@ export const GalleryItem = ({
           شرح تصویر یا ویدیو:
         </Typography>
         <RHFTextField
-          // disabled={!activeCaption}
-          name={`roomGalleryModelList.${index}.caption`}
+          onChange={(e) => setValue(`roomGalleryModelList.${index}.caption`, e.target.value)}
+          name={``}
           placeholder=""
           sx={{
             '& .MuiInputBase-colorPrimary': {

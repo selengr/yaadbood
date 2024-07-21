@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LoadingButton } from '@mui/lab';
 import { enqueueSnackbar } from 'notistack';
 
@@ -53,6 +53,11 @@ const EventStepSixModal = ({
       enqueueSnackbar('کپی انجام شد', { variant: 'default' });
     }
   };
+
+  useEffect(() => {
+    setLink('https://mresalat.ir/yaadbood/event/1');
+    setValue('publicLink', link);
+  }, []);
 
   return (
     <>
@@ -158,7 +163,7 @@ const EventStepSixModal = ({
                 ))}
               </Tabs>
               <TextField
-                name={`publicLink`}
+                // name={`publicLink`}
                 placeholder=""
                 // onClick={()=>setValue('isPrivate',  JSON.parse(newValue))}
                 disabled={true}
@@ -200,7 +205,7 @@ const EventStepSixModal = ({
             {currentTab === 'true' && (
               <Stack sx={{ display: 'flex', flexDirection: 'column', width: '100%' }} spacing={2}>
                 <TextField
-                  name={`publicLink`}
+                  // name={`publicLink`}
                   placeholder="شماره همراه یا شناسه ورود"
                   onChange={(e) => setValue('privateLoggedInId', e.target.value)}
                   sx={{
@@ -216,7 +221,7 @@ const EventStepSixModal = ({
                   }}
                 />
                 <TextField
-                  name={`publicLink`}
+                  // name={`publicLink`}
                   placeholder="رمز عبور"
                   onChange={(e) => setValue('privatePassword', e.target.value)}
                   sx={{

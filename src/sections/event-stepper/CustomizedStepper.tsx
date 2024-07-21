@@ -133,7 +133,7 @@ export default function CustomizedSteppers() {
 
   const defaultValues = useMemo(
     () => ({
-      // step one
+      // -------------------------- step one
       title: '',
       roomTypeEnum: '',
       deadName: '',
@@ -142,26 +142,24 @@ export default function CustomizedSteppers() {
       ceremonyDuration: '',
       date: null,
       startTime: '',
-      roomGalleryModelList: null,
-      // roomGalleryModelList: [
-      //   {
-      //     caption: '',
-      //     roomGalleryListModels: {
-      //       mediaTypeEnum: '',
-      //       media_file: '',
-      //     },
-      //   },
-      // ],
 
-      //Step2 MediaInformationModel
+      // -------------------------- step two
       mediaList: [],
       dedicatedSound: '',
-      privateMediaList: null,
-      roomSpecialFriendsModelList: null,
+      roomGalleryModelList: [],
+      // -------------------------- step three
 
-      specialGuestModelList: null,
+      roomSpecialFriendsModelList: [],
 
+      // -------------------------- step four
       abilityList: [],
+      // -------------------------- step five
+
+      isPrivate: false,
+      publicLink: '',
+      privateLoggedInId: '',
+      privateLink: '',
+      privatePassword: '',
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     // [currentUserList]
