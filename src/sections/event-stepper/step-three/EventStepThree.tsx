@@ -55,6 +55,7 @@ const EventStepThree = ({
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
         {PresentersList.map((item, index) => {
+          let activeAdd = PresentersList.length - 1;
           let activeLine =
             getValues(`roomSpecialFriendsModelList.${index}.name`)?.length > 0 ||
             getValues(`roomSpecialFriendsModelList.${index}.relationshipType`)?.length > 0 ||
@@ -63,7 +64,6 @@ const EventStepThree = ({
             getValues(`roomSpecialFriendsModelList.${index}.massage`)?.length > 0 ||
             getValues(`roomSpecialFriendsModelList.${index}.img`)?.length > 0;
           let activeImage = getValues(`roomSpecialFriendsModelList.${index}.img`)?.length > 0;
-          let isAddDisabled = !activeLine && PresentersList[PresentersList.length - 1];
           return (
             <>
               <Box
@@ -217,48 +217,42 @@ const EventStepThree = ({
                       sx={{ color: '#2CDFC9' }}
                     />
                   </IconButton>
-                  <IconButton
-                    size="small"
-                    onClick={() => handleDelete(index)}
-                    disabled={PresentersList.length <= 1}
-                    sx={{
-                      p: 1.5,
-                      backgroundColor:
-                        PresentersList.length <= 1 ? '#A8A8A8' : 'rgba(250, 77, 86, 0.05)',
-                      borderRadius: 1,
-                      border:
-                        PresentersList.length <= 1 ? '1px solid #A8A8A8' : '1px solid #FA4D56',
-                      '&:hover': {
-                        // color: '#FA4D56',
-                      },
-                    }}
-                  >
-                    <SvgColor
-                      src={`/assets/icons/svg/ic_trash.svg`}
-                      sx={{ color: PresentersList.length <= 1 ? '#A8A8A8' : '#FA4D56' }}
-                    />
-                  </IconButton>
-                  <IconButton
-                    size="small"
-                    disabled={isAddDisabled}
-                    onClick={() => {
-                      setPresentersList((pre) => [...pre, index + 1]);
-                    }}
-                    sx={{
-                      p: 1.5,
-                      backgroundColor: activeLine ? 'rgba(23, 88, 186, 0.05)' : '#A8A8A8',
-                      borderRadius: 1,
-                      border: activeLine ? '1px solid #1758BA' : '1px solid #A8A8A8',
-                      '&:hover': {
-                        // color: '#1758BA',
-                      },
-                    }}
-                  >
-                    <SvgColor
-                      src={`/assets/icons/svg/ic_add.svg`}
-                      sx={{ color: activeLine ? '#1758BA' : '#A8A8A8' }}
-                    />
-                  </IconButton>
+                  {activeAdd !== index && (
+                    <IconButton
+                      size="small"
+                      onClick={() => handleDelete(index)}
+                      sx={{
+                        p: 1.5,
+                        backgroundColor: 'rgba(250, 77, 86, 0.05)',
+                        borderRadius: 1,
+                        border: '1px solid #FA4D56',
+                        '&:hover': {
+                          // color: '#FA4D56',
+                        },
+                      }}
+                    >
+                      <SvgColor src={`/assets/icons/svg/ic_trash.svg`} sx={{ color: '#FA4D56' }} />
+                    </IconButton>
+                  )}
+                  {activeAdd === index && (
+                    <IconButton
+                      size="small"
+                      onClick={() => {
+                        setPresentersList((pre) => [...pre, index + 1]);
+                      }}
+                      sx={{
+                        p: 1.5,
+                        backgroundColor: 'rgba(23, 88, 186, 0.05)',
+                        borderRadius: 1,
+                        border: '1px solid #1758BA',
+                        '&:hover': {
+                          // color: '#1758BA',
+                        },
+                      }}
+                    >
+                      <SvgColor src={`/assets/icons/svg/ic_add.svg`} sx={{ color: '#1758BA' }} />
+                    </IconButton>
+                  )}
                 </Stack>
               </Box>
 

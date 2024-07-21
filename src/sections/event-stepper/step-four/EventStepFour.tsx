@@ -50,6 +50,7 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
         {abilityList.map((item, index) => {
           return (
             <Box
+              key={item.id}
               sx={{
                 p: 2,
                 my: 3,
@@ -59,7 +60,7 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
                 alignItems: 'start',
                 flexDirection: 'column',
                 bgcolor: (theme) => theme.palette.primary.lighter,
-                border: getValues(`abilityList`).some(
+                border: getValues(`abilityList`)?.some(
                   (abilityItem: { id: number }) => abilityItem.id === item.id
                 )
                   ? '1px solid #1758BA'
@@ -77,7 +78,7 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
                 >
                   <Checkbox
                     value={item.name}
-                    checked={getValues(`abilityList`).some(
+                    checked={getValues(`abilityList`)?.some(
                       (abilityItem: { id: number }) => abilityItem.id === item.id
                     )}
                     onChange={(event: any) => {
@@ -107,7 +108,7 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
                 {item.description}
               </Typography>
 
-              {getValues(`abilityList`).some(
+              {getValues(`abilityList`)?.some(
                 (abilityItem: { id: number }) => abilityItem.id === item.id
               ) && (
                 <Box

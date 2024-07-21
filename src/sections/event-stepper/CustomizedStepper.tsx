@@ -131,8 +131,6 @@ export default function CustomizedSteppers() {
   const [loading, setLoading] = useState(false);
   const delta: number = activeStep - previousStep;
 
-  const { enqueueSnackbar } = useSnackbar();
-
   const defaultValues = useMemo(
     () => ({
       // step one
@@ -144,33 +142,22 @@ export default function CustomizedSteppers() {
       ceremonyDuration: '',
       date: null,
       startTime: '',
-
-      roomGalleryModelList: [
-        {
-          caption: '',
-          roomGalleryListModels: {
-            mediaTypeEnum: '',
-            media_file: '',
-          },
-        },
-      ],
+      roomGalleryModelList: null,
+      // roomGalleryModelList: [
+      //   {
+      //     caption: '',
+      //     roomGalleryListModels: {
+      //       mediaTypeEnum: '',
+      //       media_file: '',
+      //     },
+      //   },
+      // ],
 
       //Step2 MediaInformationModel
       mediaList: [],
       dedicatedSound: '',
       privateMediaList: null,
-
-      roomSpecialFriendsModelList: [
-        {
-          postTypeEnum: '',
-          name: '',
-          relationshipType: '',
-          phoneNumber: '',
-          img: '',
-          massage: '',
-          password: '',
-        },
-      ],
+      roomSpecialFriendsModelList: null,
 
       specialGuestModelList: null,
 
