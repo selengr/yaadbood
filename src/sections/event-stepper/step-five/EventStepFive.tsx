@@ -94,7 +94,18 @@ const EventStepFive = ({ delta, control, watch, getValues, setValue }: EventStep
               alignItems: 'center',
             }}
           >
-            <Image src="/assets/images/svg/yaadboodPerson.svg" alt="ddl" width={90} height={90} />
+            {getValues('deadImg') && (
+              <Image
+                src={'http://172.16.11.24:8080/filemanager/' + getValues('deadImg')?.substring(1)}
+                width={90}
+                height={90}
+                alt=""
+              />
+            )}
+
+            {getValues('deadImg') && (
+              <Image src="/assets/images/svg/yaadboodPerson.svg" alt="ddl" width={90} height={90} />
+            )}
           </Stack>
         </Box>
 
