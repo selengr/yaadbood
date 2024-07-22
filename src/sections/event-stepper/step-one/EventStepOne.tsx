@@ -117,8 +117,8 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
                   sx={{
                     direction: 'ltr !important',
                   }}
-                  key={option.caption}
-                  value={option.caption}
+                  key={option.value}
+                  value={option.value}
                 >
                   {option.caption}
                 </MenuItem>

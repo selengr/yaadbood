@@ -122,7 +122,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ media }) => {
       >
         <audio
           ref={audioPlayer}
-          src={'http://172.16.11.24:8080/filemanager/' + media.link}
+          src={'http://172.16.11.24:8080/filemanager' + media.link}
           preload="metadata"
         ></audio>
 
