@@ -126,7 +126,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ media }) => {
       >
         <audio
           ref={audioPlayer}
-          src={'https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_100KB_OGG.ogg'}
+          src={'http://172.16.11.24:8080/filemanager' + media.link}
           preload="metadata"
         ></audio>
 
