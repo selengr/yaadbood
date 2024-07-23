@@ -127,7 +127,7 @@ function getStepContent({
 export default function CustomizedSteppers() {
   const { push } = useRouter();
   const [previousStep, setPreviousStep] = useState(0);
-  const [activeStep, setActiveStep] = useState<number>(4);
+  const [activeStep, setActiveStep] = useState<number>(0);
   const [openDialog, setOpenDialog] = useState(false);
   const [loading, setLoading] = useState(false);
   const delta: number = activeStep - previousStep;
@@ -140,9 +140,9 @@ export default function CustomizedSteppers() {
       deadName: '',
       deadImg: null,
       deadAbout: '',
-      ceremonyDuration: '2',
-      date: {year: 1403, month: 8, day: 19},
-      startTime: '17:45',
+      ceremonyDuration: '',
+      date: null,
+      startTime: '',
 
       // -------------------------- step two
       mediaList: [],

@@ -44,8 +44,8 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
 
   useEffect(() => {
     async function getMediaList() {
-      //--------test
-      setDataListCombo(_dataList.dataList);
+      //--------test mock data
+      // setDataListCombo(_dataList.dataList);
       //--------test
       try {
         let res = await callApiRoomType();

@@ -37,8 +37,8 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
 
   useEffect(() => {
     async function getMediaList() {
-      //--------test
-      setMediaList(_mediaList.content);
+      //--------test mock data
+      // setMediaList(_mediaList.content);
       //--------test
       try {
         let res = await callApiMediaList();
