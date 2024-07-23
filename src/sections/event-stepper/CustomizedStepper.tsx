@@ -33,6 +33,7 @@ import { FuneralModel, IGetStepContentProps } from '@/@types/event_maker';
 
 // services
 import { callApiCreateRoom } from '@/services/apis/builder';
+import { AnyListenerPredicate } from '@reduxjs/toolkit';
 
 // ----------------------------------------------------------------------
 
@@ -126,7 +127,7 @@ function getStepContent({
 export default function CustomizedSteppers() {
   const { push } = useRouter();
   const [previousStep, setPreviousStep] = useState(0);
-  const [activeStep, setActiveStep] = useState<number>(0);
+  const [activeStep, setActiveStep] = useState<number>(4);
   const [openDialog, setOpenDialog] = useState(false);
   const [loading, setLoading] = useState(false);
   const delta: number = activeStep - previousStep;
@@ -139,9 +140,9 @@ export default function CustomizedSteppers() {
       deadName: '',
       deadImg: null,
       deadAbout: '',
-      ceremonyDuration: '',
-      date: null,
-      startTime: '',
+      ceremonyDuration: '2',
+      date: {year: 1403, month: 8, day: 19},
+      startTime: '17:45',
 
       // -------------------------- step two
       mediaList: [],
@@ -186,12 +187,26 @@ export default function CustomizedSteppers() {
   console.log('errors :>> ', errors);
   console.log('watch() the result :>> ', watch());
 
-  const processForm: any = async (data: any) => {
+  const processForm: any = async (data: FormValuesProps) => {
     setLoading(true);
+    // debugger
+    if (data.roomSpecialFriendsModelList) {
+      const result = data.roomSpecialFriendsModelList
+        .filter((obj: any) => Object.values(obj).some((val) => val !== undefined))
+        .map((obj: any) =>
+          Object.fromEntries(
+            Object.entries(obj).map(([key, value]) => [key, value === undefined ? '' : value])
+          )
+        );
+      data.roomSpecialFriendsModelList = result;
+    }
+
     try {
       await callApiCreateRoom(data);
-      push(PATH_PAGE.event.crate);
-      reset();
+      setTimeout(() => {
+        push(PATH_PAGE.event.crate);
+        reset();
+      }, 1000);
     } finally {
       setLoading(false);
     }

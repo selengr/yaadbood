@@ -58,7 +58,7 @@ const EventStepThree = ({
           let activeAdd = PresentersList.length - 1;
           let activeImage = getValues(`roomSpecialFriendsModelList.${index}.img`)?.length > 0;
           return (
-            <>
+            <Stack key={Math.floor(Math.random() * 1)}>
               <Box
                 rowGap={3}
                 columnGap={2}
@@ -311,7 +311,7 @@ const EventStepThree = ({
                   />
                 </Stack>
               </Box>
-            </>
+            </Stack>
           );
         })}
       </motion.div>

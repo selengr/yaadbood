@@ -14,6 +14,22 @@ interface EventStepFiveProps {
   getValues: any;
   setValue: (name: string, value: any) => void;
 }
+
+const persianMonthNames = [
+  'فروردین',
+  'اردیبهشت',
+  'خرداد',
+  'تیر',
+  'مرداد',
+  'شهریور',
+  'مهر',
+  'آبان',
+  'آذر',
+  'دی',
+  'بهمن',
+  'اسفند',
+];
+
 // --------------------------------------------------------
 const EventStepFive = ({ delta, control, watch, getValues, setValue }: EventStepFiveProps) => {
   const [abilityList, setAbilityList] = useState<IContentModel[]>([]);
@@ -21,6 +37,17 @@ const EventStepFive = ({ delta, control, watch, getValues, setValue }: EventStep
     let feature = window && localStorage.getItem('feature-recovery');
     if (feature) setAbilityList(JSON.parse(feature));
   }, []);
+
+  const persianDate = (year: number, month: number, day: number) => {
+    const persianYear = year; //+ 621;
+    return `${day} ${persianMonthNames[month - 1]}ماه ${persianYear} `;
+  };
+
+  const persianDateStr = persianDate(
+    getValues('date.year'),
+    getValues('date.month'),
+    getValues('date.day')
+  );
 
   return (
     <div>
@@ -71,12 +98,13 @@ const EventStepFive = ({ delta, control, watch, getValues, setValue }: EventStep
               زمان برگزاری:
             </Typography>
             <Typography variant="body2" sx={{ color: '#393939' }}>
-              {getValues('date.month')}
-              {getValues('date.year') ?? '---'}
-              از ساعت
+              &nbsp;
+              {persianDateStr}
+              از ساعت &nbsp;
               {getValues('startTime') ?? '---'}
-              به مدت
+              &nbsp; به مدت &nbsp;
               {getValues('ceremonyDuration') ?? '---'}
+              ساعت
             </Typography>
           </Stack>
 
@@ -125,12 +153,12 @@ const EventStepFive = ({ delta, control, watch, getValues, setValue }: EventStep
         >
           {abilityList?.map((item, index) => {
             return (
-              <>
+              <div key={Math.floor(Math.random() * 600)} className="w-full">
                 {' '}
                 {getValues(`abilityList`)?.map((itm: any, indx: any) => {
                   if (itm.id === item.id) {
                     return (
-                      <>
+                      <div key={Math.floor(Math.random() * 600)} className="w-full">
                         <Stack
                           direction="row"
                           sx={{
@@ -251,12 +279,14 @@ const EventStepFive = ({ delta, control, watch, getValues, setValue }: EventStep
                             {item.price} تومان
                           </Typography>
                         </Stack>
-                        <Divider sx={{ mb: 2, width: '100%' }} />
-                      </>
+                        {getValues(`abilityList`)?.length - 1 !== indx && (
+                          <Divider sx={{ mb: 2, width: '100%' }} />
+                        )}
+                      </div>
                     );
                   }
                 })}
-              </>
+              </div>
             );
           })}
         </Box>

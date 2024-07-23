@@ -38,7 +38,7 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
   useEffect(() => {
     async function getMediaList() {
       //--------test
-      // setMediaList(_mediaList.content);
+      setMediaList(_mediaList.content);
       //--------test
       try {
         let res = await callApiMediaList();
@@ -74,6 +74,7 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
           {mediaList?.map((item: IAudioContent, index) => (
             <Stack
               // direction="row"
+              key={item.id}
               sx={{
                 display: 'flex',
                 justifyContent: 'center',

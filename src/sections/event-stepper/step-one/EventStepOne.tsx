@@ -25,10 +25,11 @@ import { IRoomTypeEnum } from '@/@types/event_maker';
 const OPTIONS_TEST = [{ name: 'FUNERAL', label: 'مجلس ترحیم' }];
 const CEREMONY_DURATION = [
   // { id: 1, value: '30دقیقه' },
-  { id: 1, value: 'ساعت1' },
-  { id: 2, value: 'ساعت2' },
-  { id: 3, value: '3ساعت' },
-  { id: 4, value: '4ساعت' },
+  { id: 1, value: '1 ساعت' },
+  { id: 2, value: '2 ساعت' },
+  { id: 3, value: '3 ساعت' },
+  { id: 4, value: '4 ساعت' },
+  { id: 1000, value: 'نامحدود' },
 ];
 
 interface EventStepOneProps {
@@ -44,7 +45,7 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
   useEffect(() => {
     async function getMediaList() {
       //--------test
-      // setDataListCombo(_dataList.dataList);
+      setDataListCombo(_dataList.dataList);
       //--------test
       try {
         let res = await callApiRoomType();
@@ -223,9 +224,11 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
               <Divider sx={{ borderStyle: 'dashed' }} />
               {CEREMONY_DURATION.map((option) => (
                 <MenuItem
-                  sx={{
-                    direction: 'ltr !important',
-                  }}
+                  sx={
+                    {
+                      // direction: 'ltr !important',
+                    }
+                  }
                   key={option.id}
                   value={option.id}
                 >
@@ -234,6 +237,9 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
               ))}
             </RHFSelect>
           </Stack>
+          <span style={{ fontSize: '12px', color: '#D21425', paddingTop: '5px' }}>
+            {errors.ceremonyDuration ? errors.ceremonyDuration.message : ''}
+          </span>
           <Stack
             direction="column"
             sx={{

@@ -79,7 +79,7 @@ export interface Date {
     dedicatedSound?: string; // assuming uuid is a string
     roomGalleryModelList?: IRoomGalleryListModel[] | [];
      // -------------------------- step three
-     roomSpecialFriendsModelList?: Presenter[]|[];
+     roomSpecialFriendsModelList?: Presenter[]|[]|any;
      // -------------------------- step four
      abilityList?: [] |  
      {

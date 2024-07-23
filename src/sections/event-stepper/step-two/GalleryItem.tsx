@@ -43,6 +43,7 @@ export const GalleryItem = ({
 
   return (
     <Box
+      key={Math.floor(Math.random() * 1)}
       sx={{
         display: 'flex',
         justifyContent: 'center',
@@ -65,6 +66,7 @@ export const GalleryItem = ({
         </Typography>
         <RHFTextField
           onChange={(e) => setValue(`roomGalleryModelList.${index}.caption`, e.target.value)}
+          disabled={!activeImage}
           name={``}
           placeholder=""
           sx={{
