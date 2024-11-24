@@ -1,8 +1,6 @@
 "use client"
 
 import React, { createRef, useCallback, useEffect, useRef, useState } from "react";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import SvgIcon from "@mui/material/SvgIcon";
 import Image from 'next/image';
 
 import ContentEditable from 'react-contenteditable'

@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SettingsProvider>
           <ThemeProvider>
             <ThemeSettings>
-              <SnackbarProvider>
+              {/* <SnackbarProvider> */}
                 <div className="flex flex-row">
                   {/* <Image
                   src="/assets/icons/svg/ic_test_nav.svg"
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <div className="w-[70px] sm:w-[450px] bg-[#D9D9D9]"></div>
                   {children}
                 </div>
-              </SnackbarProvider>
+              {/* </SnackbarProvider> */}
             </ThemeSettings>
           </ThemeProvider>
         </SettingsProvider>
