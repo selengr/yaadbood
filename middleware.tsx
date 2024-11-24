@@ -13,7 +13,7 @@ export async function middleware(req: NextRequest, res: NextResponse) {
   const has_token = req.cookies.has('access_token');
 
   if (pathname.startsWith('/_next')) return NextResponse.next();
-  if (isLocalhost(href)) localUrl();
+  // if (isLocalhost(href)) localUrl();
   return NextResponse.next();
 }
 
