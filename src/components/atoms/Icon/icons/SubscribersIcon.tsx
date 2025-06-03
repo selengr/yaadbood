@@ -1,0 +1,67 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+
+interface SubscribersIconProps {
+  width?: number;
+  height?: number;
+}
+
+const SubscribersIcon: React.FC<SubscribersIconProps> = ({ width = 21, height = 20 }) => {
+  const iconColor = useSelector((state: RootState) => state.iconColor.color) || "#334155";
+
+  return (
+    <svg
+      viewBox="0 0 21 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+    >
+      <path
+        d="M15.1625 5.96663C15.1125 5.9583 15.0542 5.9583 15.0042 5.96663C13.8542 5.92496 12.9375 4.98329 12.9375 3.81663C12.9375 2.62496 13.8958 1.66663 15.0875 1.66663C16.2792 1.66663 17.2375 2.63329 17.2375 3.81663C17.2292 4.98329 16.3125 5.92496 15.1625 5.96663Z"
+        stroke={iconColor}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14.3023 12.0333C15.444 12.225 16.7023 12.025 17.5857 11.4333C18.7607 10.65 18.7607 9.36664 17.5857 8.58331C16.694 7.99164 15.419 7.79163 14.2773 7.99163"
+        stroke={iconColor}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5.1375 5.96663C5.1875 5.9583 5.24583 5.9583 5.29583 5.96663C6.44583 5.92496 7.3625 4.98329 7.3625 3.81663C7.3625 2.62496 6.40417 1.66663 5.2125 1.66663C4.02083 1.66663 3.0625 2.63329 3.0625 3.81663C3.07083 4.98329 3.9875 5.92496 5.1375 5.96663Z"
+        stroke={iconColor}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5.99661 12.0333C4.85495 12.225 3.59661 12.025 2.71328 11.4333C1.53828 10.65 1.53828 9.36664 2.71328 8.58331C3.60495 7.99164 4.87995 7.79163 6.02161 7.99163"
+        stroke={iconColor}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10.1664 12.1917C10.1164 12.1834 10.0581 12.1834 10.0081 12.1917C8.85807 12.1501 7.94141 11.2084 7.94141 10.0417C7.94141 8.85006 8.89974 7.89172 10.0914 7.89172C11.2831 7.89172 12.2414 8.85839 12.2414 10.0417C12.2331 11.2084 11.3164 12.1584 10.1664 12.1917Z"
+        stroke={iconColor}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.74063 14.8167C6.56563 15.6 6.56563 16.8833 7.74063 17.6667C9.07396 18.5583 11.2573 18.5583 12.5906 17.6667C13.7656 16.8833 13.7656 15.6 12.5906 14.8167C11.2656 13.9333 9.07396 13.9333 7.74063 14.8167Z"
+        stroke={iconColor}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export default SubscribersIcon;

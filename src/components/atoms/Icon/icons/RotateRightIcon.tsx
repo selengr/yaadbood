@@ -1,0 +1,28 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+
+interface RotateRightIconProps {
+  width?: number;
+  height?: number;
+}
+
+const RotateRightIcon: React.FC<RotateRightIconProps> = ({ width = 24, height = 24  }) => {
+  const iconColor = useSelector((state: RootState) => state.iconColor.color) || "#475569";
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M16.18 17.6L17.61 19.03C16.2859 20.0932 14.6873 20.759 13 20.95V18.93C14.18 18.76 15.27 18.29 16.18 17.61V17.6ZM17.6 16.19L19.02 17.61C20.0832 16.2859 20.749 14.6873 20.94 13H18.92C18.7549 14.1573 18.3009 15.2544 17.6 16.19ZM20.94 11C20.7534 9.31149 20.0872 7.71174 19.02 6.39L17.59 7.82C18.28 8.74 18.74 9.82 18.91 11H20.93H20.94ZM12.37 8L14.11 5.34L14.99 4L14.59 3.39L12.37 0H10L11.96 3C7.02 3.02 3 7.05 3 12C3 16.62 6.51 20.44 11 20.94V18.92C7.61 18.43 5 15.52 5 12C5 8.15 8.12 5.03 11.96 5L10 8H12.37Z"
+        fill={iconColor}
+      />
+    </svg>
+  );
+};
+
+export default RotateRightIcon;

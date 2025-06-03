@@ -1,0 +1,44 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+
+interface BinanceIconProps {
+  width?: number;
+  height?: number;
+}
+
+const BinanceIcon: React.FC<BinanceIconProps> = ({ width = 18, height = 19 }) => {
+  const iconColor = useSelector((state: RootState) => state.iconColor.color);
+
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 18 19"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_80_109740)">
+        <path d="M0 0.5H18V18.5H0V0.5Z" fill="#F0B90A" />
+        <path
+          d="M6.67 8.56116L9 6.27616L11.332 8.56216L12.687 7.23216L9 3.61816L5.314 7.23216L6.67 8.56216V8.56116ZM5.712 9.50016L4.356 8.17016L3 9.50016L4.356 10.8302L5.712 9.50016ZM6.67 10.4392L9 12.7242L11.332 10.4382L12.688 11.7672L9 15.3832L5.314 11.7702L5.312 11.7682L6.67 10.4392ZM13.644 10.8302L15 9.50016L13.644 8.17016L12.288 9.50016L13.644 10.8302Z"
+          fill={iconColor}
+        />
+        <path
+          d="M10.3741 9.50039L8.99909 8.15039L7.98209 9.14739L7.86509 9.26239L7.62509 9.49839L7.62109 9.50039L7.62309 9.50239L8.99909 10.8504L10.3751 9.50039H10.3741Z"
+          fill={iconColor}
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_80_109740">
+          <path
+            d="M0 9.5C0 4.52944 4.02944 0.5 9 0.5C13.9706 0.5 18 4.52944 18 9.5C18 14.4706 13.9706 18.5 9 18.5C4.02944 18.5 0 14.4706 0 9.5Z"
+            fill="white"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
+export default BinanceIcon;

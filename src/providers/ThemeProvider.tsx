@@ -1,5 +1,5 @@
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-import { ThemeProviderProps } from '@mui/material/styles/ThemeProvider';
+import { ThemeProviderProps } from '@mui/material/styles';
 import { useMemo } from 'react';
 
 import { useAppSelector } from '@/hooks/util/redux.hooks';

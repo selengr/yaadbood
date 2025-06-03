@@ -1,0 +1,37 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+
+interface OptionIconProps {
+  width?: number;
+  height?: number;
+}
+
+const OptionIcon: React.FC<OptionIconProps> = ({ width = 16, height = 16 }) => {
+  const iconColor = useSelector((state: RootState) => state.iconColor.color) || "#64748B";
+
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.66602 12.6667C6.66602 13.4 7.26602 14 7.99935 14C8.73268 14 9.33268 13.4 9.33268 12.6667C9.33268 11.9333 8.73268 11.3333 7.99935 11.3333C7.26602 11.3333 6.66602 11.9333 6.66602 12.6667Z"
+        fill={iconColor}
+      />
+      <path
+        d="M6.66602 3.33366C6.66602 4.06699 7.26602 4.66699 7.99935 4.66699C8.73268 4.66699 9.33268 4.06699 9.33268 3.33366C9.33268 2.60033 8.73268 2.00033 7.99935 2.00033C7.26602 2.00033 6.66602 2.60033 6.66602 3.33366Z"
+        fill={iconColor}
+      />
+      <path
+        d="M6.66602 7.99967C6.66602 8.73301 7.26602 9.33301 7.99935 9.33301C8.73268 9.33301 9.33268 8.73301 9.33268 7.99967C9.33268 7.26634 8.73268 6.66634 7.99935 6.66634C7.26602 6.66634 6.66602 7.26634 6.66602 7.99967Z"
+        fill={iconColor}
+      />
+    </svg>
+  );
+};
+
+export default OptionIcon;
