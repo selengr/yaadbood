@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import type { Metadata } from "next";
+import { PropsWithChildren } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
+import { Geist, Geist_Mono } from "next/font/google";
+// providers
 import { AppProviders } from '@/providers';
 
 
@@ -23,15 +25,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  export default function RootLayout(props: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
-          <AppProviders>{children}</AppProviders>
+          <AppProviders>{props.children}</AppProviders>
       </body>
     </html>
   );
