@@ -13,9 +13,9 @@ import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
 import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali';
 
 // components
-import { DatePickerMui } from '@/components/datePicker/DatePickerMui';
+import { DatePickerMui } from '@/components/components/datePicker/DatePickerMui';
 // import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
-import { RHFSelect, RHFTextField } from '@/components/hook-form';
+import { RHFSelect, RHFTextField } from '@/components/components/hook-form';
 import { useEffect, useState } from 'react';
 import { _dataList } from '@/_mock/arrays/_yaadbood';
 import { callApiRoomType } from '@/services/apis/builder';

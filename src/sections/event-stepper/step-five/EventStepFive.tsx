@@ -67,7 +67,7 @@ const EventStepFive = ({ delta, control, watch, getValues, setValue }: EventStep
             flexDirection: 'column',
             width: '100%',
             position: 'relative',
-            bgcolor: (theme) => theme.palette.primary.lighter,
+            // bgcolor: (theme) => theme.palette.primary.lighter, //change needed
           }}
         >
           <Stack
@@ -148,7 +148,7 @@ const EventStepFive = ({ delta, control, watch, getValues, setValue }: EventStep
             alignItems: 'start',
             flexDirection: 'column',
             width: '100%',
-            bgcolor: (theme) => theme.palette.primary.lighter,
+            // bgcolor: (theme) => theme.palette.primary.lighter, //  change needed
           }}
         >
           {abilityList?.map((item, index) => {

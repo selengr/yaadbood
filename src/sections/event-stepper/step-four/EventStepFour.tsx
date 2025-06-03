@@ -59,7 +59,7 @@ const EventStepFour = ({ delta, control, watch, getValues, setValue }: EventStep
                 justifyContent: 'start',
                 alignItems: 'start',
                 flexDirection: 'column',
-                bgcolor: (theme) => theme.palette.primary.lighter,
+                // bgcolor: (theme) => theme.palette.primary.lighter, // change need
                 border: getValues(`abilityList`)?.some(
                   (abilityItem: { id: number }) => abilityItem.id === item.id
                 )

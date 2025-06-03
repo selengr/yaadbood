@@ -5,9 +5,9 @@ import { Box, Button, Divider, IconButton, MenuItem, Stack, Typography } from '@
 
 import { motion } from 'framer-motion';
 // components
-import ConfirmDialog from '@/components/confirm-dialog';
-import SvgColor from '@/components/svg-color/SvgColor';
-import { RHFSelect, RHFTextField } from '@/components/hook-form';
+import ConfirmDialog from '@/components/components/confirm-dialog';
+import SvgColor from '@/components/components/svg-color/SvgColor';
+import { RHFSelect, RHFTextField } from '@/components/components/hook-form';
 // import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
 
 // --------------------------------------------------------

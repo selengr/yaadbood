@@ -1,6 +1,6 @@
 'use client';
 // .next
-import { useSnackbar } from 'notistack';
+// import { useSnackbar } from 'notistack';
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 // @mui
@@ -19,7 +19,7 @@ import { Control, SubmitHandler, useForm } from 'react-hook-form';
 import { FormDataSchema } from './schema';
 
 // components
-import FormProvider from '@/components/hook-form/FormProvider';
+import FormProvider from '@/components/components/hook-form/FormProvider';
 
 // step
 import EventStepOne from './step-one/EventStepOne';
@@ -370,7 +370,7 @@ export default function CustomizedSteppers() {
               onClick={handleBack}
               sx={{
                 backgroundColor: (theme) => theme.palette.primary.main,
-                border: (theme) => `solid 2px ${theme.palette.background.neutral}`,
+                // border: (theme) => `solid 2px ${theme.palette.background.neutral}`, // please change
                 color: '#FFF',
                 ':hover': {
                   backgroundColor: (theme) => theme.palette.primary.main,

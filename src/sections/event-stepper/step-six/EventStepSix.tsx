@@ -1,6 +1,6 @@
 import { IContentModel } from '@/@types/event_maker';
-import ConfirmDialog from '@/components/confirm-dialog';
-import { RHFCheckbox } from '@/components/hook-form';
+import ConfirmDialog from '@/components/components/confirm-dialog';
+import { RHFCheckbox } from '@/components/components/hook-form';
 import { Box, Button, Checkbox, Divider, Radio, Stack, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import Image from 'next/image';

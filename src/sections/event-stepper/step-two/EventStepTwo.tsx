@@ -8,13 +8,13 @@ import { IAudioContent } from '@/@types/event_maker';
 import { _mediaList } from '@/_mock/arrays/_yaadbood';
 
 // components
-import SvgColor from '@/components/svg-color';
-import ConfirmDialog from '@/components/confirm-dialog';
-import AudioPlayer from '@/components/audio-player/AudioPlayer';
-import { RHFCheckbox, RHFTextField } from '@/components/hook-form';
+import SvgColor from '@/components/components/svg-color';
+import ConfirmDialog from '@/components/components/confirm-dialog';
+import AudioPlayer from '@/components/components/audio-player/AudioPlayer';
+import { RHFCheckbox, RHFTextField } from '@/components/components/hook-form';
 // import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
 // hooks
-import useResponsive from '@/hooks/useResponsive';
+import useResponsive from '@/hooks/hooks/useResponsive';
 // services
 import { callApiMediaList } from '@/services/apis/builder';
 import { Box, Button, Checkbox, IconButton, Stack, Typography } from '@mui/material';
@@ -68,7 +68,7 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
             flexDirection: 'column',
             width: '100%',
             gap: 3,
-            bgcolor: (theme) => theme.palette.primary.lighter,
+            // bgcolor: (theme) => theme.palette.primary.lighter, // please change
           }}
         >
           {mediaList?.map((item: IAudioContent, index) => (
@@ -187,7 +187,7 @@ const EventStepTwo = ({ delta, setValue, watch, getValues }: EventStepTwoProps) 
             flexDirection: 'column',
             width: '100%',
             gap: 3,
-            bgcolor: (theme) => theme.palette.primary.lighter,
+            // bgcolor: (theme) => theme.palette.primary.lighter, // please change
           }}
         >
           {roomGallery.map((item, index) => (
