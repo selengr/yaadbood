@@ -1,30 +1,23 @@
-'use client';
+"use client";
 
-import '@/styles/globals.css';
-import 'react-toastify/dist/ReactToastify.css';
+import "@/styles/globals.css";
+import "react-toastify/dist/ReactToastify.css";
 
-import { PropsWithChildren, useEffect, useState } from 'react';
-import { ToastContainer } from 'react-toastify';
-
-import { LocalizationProvider } from '@/providers/LocalizationProvider';
-import { QueryClientProvider } from '@/providers/QueryClientProvider';
-import { ThemeProvider } from '@/providers/ThemeProvider';
-import { darkTheme, lightTheme } from '@/themes/materialui';
-
-import StoreProvider from '@/providers/StoreProvider';
-import { IconColorProvider } from '@/components/atoms/Icon/IconColorContext';
-import { startUsageTracking } from '@/utils/auth';
-import { AuthModal } from '@/components/auth/AuthModal';
-import { AuthSteps } from '@/types/auth';
+import { ToastContainer } from "react-toastify";
+import { PropsWithChildren, useState } from "react";
+// providers
+import StoreProvider from "@/providers/StoreProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
+import { QueryClientProvider } from "@/providers/QueryClientProvider";
+import { LocalizationProvider } from "@/providers/LocalizationProvider";
+// themes
+import { darkTheme, lightTheme } from "@/themes/materialui";
+// components
+import { IconColorProvider } from "@/components/atoms/Icon/IconColorContext";
 
 export default function AppProviders({ children }: PropsWithChildren) {
   const [isDarkMode] = useState(false);
   const theme = isDarkMode ? darkTheme : lightTheme;
-
-  useEffect(() => {
-    const stopTracking = startUsageTracking();
-    return () => stopTracking();
-  }, []);
 
   return (
     <StoreProvider>
@@ -39,19 +32,9 @@ export default function AppProviders({ children }: PropsWithChildren) {
       />
       <LocalizationProvider>
         <ThemeProvider theme={theme}>
-          <SessionProvider>
-            <QueryClientProvider>
-              <IconColorProvider>
-                {children}
-                {/* <AuthModal
-                  forceLogin={true}
-                  showLoginModal={false}
-                  onClose={() => {}}
-                  manualStep={AuthSteps.login}
-                /> */}
-              </IconColorProvider>
-            </QueryClientProvider>
-          </SessionProvider>
+          <QueryClientProvider>
+            <IconColorProvider>{children}</IconColorProvider>
+          </QueryClientProvider>
         </ThemeProvider>
       </LocalizationProvider>
     </StoreProvider>
