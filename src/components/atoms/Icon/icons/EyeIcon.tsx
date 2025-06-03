@@ -1,0 +1,39 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+
+interface EyeIconProps {
+  width?: number;
+  height?: number;
+}
+
+const EyeIcon: React.FC<EyeIconProps> = ({ width = 17, height = 16 }) => {
+  const iconColor = useSelector((state: RootState) => state.iconColor.color);
+
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 17 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10.8866 7.99995C10.8866 9.31995 9.81995 10.3866 8.49995 10.3866C7.17995 10.3866 6.11328 9.31995 6.11328 7.99995C6.11328 6.67995 7.17995 5.61328 8.49995 5.61328C9.81995 5.61328 10.8866 6.67995 10.8866 7.99995Z"
+        stroke={iconColor}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.4999 13.5138C10.8532 13.5138 13.0466 12.1271 14.5732 9.72714C15.1732 8.78714 15.1732 7.20714 14.5732 6.26714C13.0466 3.86714 10.8532 2.48047 8.4999 2.48047C6.14656 2.48047 3.95323 3.86714 2.42656 6.26714C1.82656 7.20714 1.82656 8.78714 2.42656 9.72714C3.95323 12.1271 6.14656 13.5138 8.4999 13.5138Z"
+        stroke={iconColor}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export default EyeIcon;

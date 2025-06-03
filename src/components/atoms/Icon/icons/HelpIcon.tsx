@@ -1,0 +1,46 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+
+interface HelpIconProps {
+  width?: number;
+  height?: number;
+}
+
+const HelpIcon: React.FC<HelpIconProps> = ({ width = 16, height = 16 }) => {
+  const iconColor = useSelector((state: RootState) => state.iconColor.color);
+
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7.9987 14.6673C11.6654 14.6673 14.6654 11.6673 14.6654 8.00065C14.6654 4.33398 11.6654 1.33398 7.9987 1.33398C4.33203 1.33398 1.33203 4.33398 1.33203 8.00065C1.33203 11.6673 4.33203 14.6673 7.9987 14.6673Z"
+        stroke={iconColor}
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8 5.33398V8.66732"
+        stroke={iconColor}
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.99609 10.666H8.00208"
+        stroke={iconColor}
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export default HelpIcon;

@@ -1,0 +1,46 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+
+interface AcademyIconProps {
+  width?: number;
+  height?: number;
+}
+
+const AcademyIcon: React.FC<AcademyIconProps> = ({ width = 21, height = 20 }) => {
+  const iconColor = useSelector((state: RootState) => state.iconColor.color);
+
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 21 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.67214 2.10873L3.65547 5.38373C2.04714 6.43373 2.04714 8.78373 3.65547 9.83373L8.67214 13.1087C9.57214 13.7004 11.0555 13.7004 11.9555 13.1087L16.9471 9.83373C18.5471 8.78373 18.5471 6.44206 16.9471 5.39206L11.9555 2.11706C11.0555 1.51706 9.57214 1.51706 8.67214 2.10873Z"
+        stroke={iconColor}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.9888 10.9004L4.98047 14.8087C4.98047 15.8671 5.79714 17.0004 6.79714 17.3337L9.45547 18.2171C9.9138 18.3671 10.6721 18.3671 11.1388 18.2171L13.7971 17.3337C14.7971 17.0004 15.6138 15.8671 15.6138 14.8087V10.9421"
+        stroke={iconColor}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M18.1289 12.5V7.5"
+        stroke={iconColor}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export default AcademyIcon;

@@ -1,0 +1,29 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+
+interface ZangooleIconProps {
+  width?: number;
+  height?: number;
+}
+
+const ZangooleIcon: React.FC<ZangooleIconProps> = ({ width = 24, height = 24 }) => {
+  const iconColor = useSelector((state: RootState) => state.iconColor.color) || "#334155";
+
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M22 19H13.72C13.9002 19.3037 13.9968 19.6496 13.9999 20.0027C14.0031 20.3558 13.9127 20.7034 13.738 21.0102C13.5633 21.3171 13.3104 21.5722 13.0052 21.7496C12.6999 21.9271 12.3531 22.0206 12 22.0206C11.6469 22.0206 11.3001 21.9271 10.9948 21.7496C10.6896 21.5722 10.4367 21.3171 10.262 21.0102C10.0873 20.7034 9.99692 20.3558 10.0001 20.0027C10.0032 19.6496 10.0998 19.3037 10.28 19H2V18C2.04883 16.9493 2.46259 15.9485 3.17 15.17L4.17 14H19.87L20.87 15.17C21.5702 15.9496 21.9707 16.9525 22 18V19ZM18.21 7.44C18.009 5.93505 17.2688 4.55416 16.1267 3.5537C14.9846 2.55323 13.5183 2.00117 12 2C10.4817 2.00117 9.01538 2.55323 7.87331 3.5537C6.73124 4.55416 5.99099 5.93505 5.79 7.44L5 13H19L18.21 7.44Z"
+        fill={iconColor}
+      />
+    </svg>
+  );
+};
+
+export default ZangooleIcon;
