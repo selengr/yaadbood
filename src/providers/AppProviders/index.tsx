@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { PropsWithChildren, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 
-import { LocalizationProvider } from '@/providers/LocalizationProvider';
 import { QueryClientProvider } from '@/providers/QueryClientProvider';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import { darkTheme, lightTheme } from '@/themes/materialui';
@@ -31,7 +30,7 @@ export default function AppProviders({ children }: PropsWithChildren) {
         limit={5}
         pauseOnHover
       />
-      <LocalizationProvider>
+
         <ThemeProvider theme={theme}>
    
             <QueryClientProvider>
@@ -41,7 +40,7 @@ export default function AppProviders({ children }: PropsWithChildren) {
             </QueryClientProvider>
       
         </ThemeProvider>
-      </LocalizationProvider>
+
     </StoreProvider>
   );
 }
