@@ -9,7 +9,6 @@ import { PropsWithChildren, useState } from "react";
 import StoreProvider from "@/providers/StoreProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { QueryClientProvider } from "@/providers/QueryClientProvider";
-import { LocalizationProvider } from "@/providers/LocalizationProvider";
 // themes
 import { darkTheme, lightTheme } from "@/themes/materialui";
 // components
@@ -30,13 +29,13 @@ export default function AppProviders({ children }: PropsWithChildren) {
         limit={5}
         pauseOnHover
       />
-      <LocalizationProvider>
+
         <ThemeProvider theme={theme}>
           <QueryClientProvider>
             <IconColorProvider>{children}</IconColorProvider>
           </QueryClientProvider>
         </ThemeProvider>
-      </LocalizationProvider>
+
     </StoreProvider>
   );
 }

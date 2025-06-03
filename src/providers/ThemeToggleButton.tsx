@@ -1,8 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import Button from '@/components/atoms/Button/Button';
-import { useDispatch, useSelector } from 'react-redux';
 import { toggleMode } from '@/redux/slices/themeSlice';
-import { RootState } from '@/redux/store';
 import MoonIcon from '@/components/atoms/Icon/icons/MoonIcon';
 import SunIcon from '@/components/atoms/Icon/icons/SunIcon';
 import { useTheme } from '@mui/material';

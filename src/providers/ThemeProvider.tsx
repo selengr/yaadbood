@@ -1,6 +1,6 @@
-import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-import { ThemeProviderProps } from '@mui/material/styles/ThemeProvider';
 import { useMemo } from 'react';
+import { ThemeProviderProps } from '@mui/material/styles';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 
 import { useAppSelector } from '@/hooks/util/redux.hooks';
 import { RootState } from '@/redux/store';
