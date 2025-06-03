@@ -3,7 +3,6 @@
 import '@/styles/globals.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { SessionProvider } from 'next-auth/react';
 import { PropsWithChildren, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 
