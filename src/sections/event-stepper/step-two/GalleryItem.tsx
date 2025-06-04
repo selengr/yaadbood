@@ -1,9 +1,9 @@
 import { useState } from 'react';
 // components
-import { RHFTextField } from '@/components/hook-form';
-import SvgColor from '@/components/svg-color/SvgColor';
-import ConfirmDialog from '@/components/confirm-dialog/ConfirmDialog';
-import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
+import { RHFTextField } from '@/components/components/hook-form';
+import SvgColor from '@/components/components/svg-color/SvgColor';
+import ConfirmDialog from '@/components/components/confirm-dialog/ConfirmDialog';
+// import { UppyUploader } from '@/components/components/mresalatUploader/UppyUploader';
 // mui
 import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
 
@@ -177,13 +177,13 @@ export const GalleryItem = ({
                   تصویر:
                 </Typography>
 
-                <UppyUploader
+                {/* <UppyUploader
                   sx={{}}
                   getData={(data: any) => {
                     setAddImage(data);
                   }}
                   withoutCamera={true}
-                />
+                /> */}
               </Stack>
             </Box>
           </>

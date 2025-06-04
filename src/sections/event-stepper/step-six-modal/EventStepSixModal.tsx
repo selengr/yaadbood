@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { LoadingButton } from '@mui/lab';
-import { enqueueSnackbar } from 'notistack';
+// import { enqueueSnackbar } from 'notistack';
 
 // components
-import Iconify from '@/components/iconify/Iconify';
-import SvgColor from '@/components/svg-color/SvgColor';
+import Iconify from '@/components/components/iconify/Iconify';
+import SvgColor from '@/components/components/svg-color/SvgColor';
 // hooks
-import useCopyToClipboard from '@/hooks/useCopyToClipboard';
+import useCopyToClipboard from '@/hooks/hooks/useCopyToClipboard';
 // mui
 import { Box, Dialog, IconButton, Stack, Tab, Tabs, TextField } from '@mui/material';
 
@@ -50,7 +50,7 @@ const EventStepSixModal = ({
   const onCopy = (text: string) => {
     if (text) {
       copy(text);
-      enqueueSnackbar('کپی انجام شد', { variant: 'default' });
+      // enqueueSnackbar('کپی انجام شد', { variant: 'default' });
     }
   };
 

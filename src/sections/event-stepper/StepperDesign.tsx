@@ -14,8 +14,8 @@ import {
 } from '@mui/material';
 import { StepIconProps } from '@mui/material/StepIcon';
 // utils
-import { bgGradient } from '@/utils/cssStyles';
-import Iconify from '@/components/iconify/Iconify';
+// import { bgGradient } from '@/utils/cssStyles';
+import Iconify from '@/components/components/iconify/Iconify';
 
 
 
@@ -99,10 +99,10 @@ export const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
       borderTopWidth: 5,
       width: '100%',
 
-      ...bgGradient({
-        startColor: theme.palette.primary.main,
-        endColor: theme.palette.primary.main,
-      }),
+      // ...bgGradient({
+      //   startColor: theme.palette.primary.main,
+      //   endColor: theme.palette.primary.main,
+      // }),
     },
   },
   [`&.${stepConnectorClasses.completed}`]: {
@@ -111,10 +111,10 @@ export const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
       borderStyle: 'dotted',
       borderTopWidth: 5,
       width: '100%',
-      ...bgGradient({
-        startColor: theme.palette.primary.main,
-        endColor: theme.palette.primary.main,
-      }),
+      // ...bgGradient({
+      //   startColor: theme.palette.primary.main,
+      //   endColor: theme.palette.primary.main,
+      // }),
     },
   },
   [`& .${stepConnectorClasses.line}`]: {
@@ -143,16 +143,16 @@ export const ColorlibStepIconRoot = styled('div')<{
       boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
       color: theme.palette.common.white,
       border: '2px solid var(--Color1, #1758BA)',
-      ...bgGradient({
-        endColor: theme.palette.error.main,
-      }),
+      // ...bgGradient({
+      //   endColor: theme.palette.error.main,
+      // }),
     }),
 
   ...(ownerState.completed && {
     color: theme.palette.common.white,
-    ...bgGradient({
-      endColor: theme.palette.error.main,
-    }),
+    // ...bgGradient({
+    //   endColor: theme.palette.error.main,
+    // }),
   }),
 }));
 

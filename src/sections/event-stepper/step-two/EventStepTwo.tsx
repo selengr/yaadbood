@@ -8,10 +8,10 @@ import { IAudioContent } from '@/@types/event_maker';
 import { _mediaList } from '@/_mock/arrays/_yaadbood';
 
 // components
-import SvgColor from '@/components/components/svg-color';
-import ConfirmDialog from '@/components/components/confirm-dialog';
+// import SvgColor from '@/components/components/svg-color';
+// import ConfirmDialog from '@/components/components/confirm-dialog';
 import AudioPlayer from '@/components/components/audio-player/AudioPlayer';
-import { RHFCheckbox, RHFTextField } from '@/components/components/hook-form';
+// import { RHFCheckbox, RHFTextField } from '@/components/components/hook-form';
 // import { UppyUploader } from '@/components/mresalatUploader/UppyUploader';
 // hooks
 import useResponsive from '@/hooks/hooks/useResponsive';

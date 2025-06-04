@@ -20,6 +20,7 @@ import { useEffect, useState } from 'react';
 import { _dataList } from '@/_mock/arrays/_yaadbood';
 import { callApiRoomType } from '@/services/apis/builder';
 import { IRoomTypeEnum } from '@/@types/event_maker';
+import { Input } from '@/components/atoms';
 
 // --------------------------------------------------------
 const OPTIONS_TEST = [{ name: 'FUNERAL', label: 'مجلس ترحیم' }];
@@ -96,6 +97,13 @@ const EventStepOne = ({ delta, setValue, errors }: EventStepOneProps) => {
                 },
               }}
             />
+
+<Input
+        label="نام یادبود:"
+        placeholder="مثلاً: مراسم بزرگداشت شهید شریعتی"
+      
+      />
+      
           </Stack>
           <Stack
             direction="column"
